@@ -1,0 +1,3142 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>義守物治線 ISU PT METRO ｜ 義守大學物理治療學系互動導覽路網</title>
+  <meta name="description" content="義守大學物理治療學系互動式捷運路網導覽：結合入學指引線、專業基礎線、進階專科線、實習國考線與課外學習活動線，23 個車站直通 79 個系網官網資源出口。">
+  <meta property="og:title" content="義守物治線 ISU PT METRO">
+  <meta property="og:description" content="義守大學物理治療學系互動式捷運路網導覽地圖">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #0b3557;
+      --brand-dark: #072238;
+      --cyan: #0cbcf5;
+      --cyan-soft: #e1f5fe;
+      --ink: #14283a;
+      --ink-soft: #56697a;
+      --ink-dim: #8b9baa;
+      --paper: #f0f4f8;
+      --card: #ffffff;
+      --line-border: #d4e0e9;
+      --shadow-sm: 0 2px 8px rgba(11, 53, 87, 0.08);
+      --shadow-md: 0 8px 24px rgba(11, 53, 87, 0.12);
+      --shadow-lg: 0 16px 40px rgba(11, 53, 87, 0.18);
+
+      /* Elegant Metro Pastel Palette */
+      --lA: #f38448; /* Admissions Line - Warm Pastel Orange */
+      --lF: #16a34a; /* Foundation Line - Fresh Jade Green */
+      --lC: #9d7be0; /* Clinical Loop - Soft Lilac Purple */
+      --lM: #0cbcf5; /* Medical & License - Vibrant Cyan */
+      --lL: #f59e0b; /* Life & Sports - Amber Gold */
+      --bg-canvas: #fbfcfd;
+
+      /* LED Display */
+      --led-bg: #0d1217;
+      --led-amber: #ffb02e;
+      --led-green: #2be685;
+      --led-dim: #604618;
+
+      --f-sans: "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --f-serif: "Noto Serif TC", serif;
+      --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+      --drawer-w: 420px;
+      --grid-line: rgba(11, 53, 87, 0.045);
+    }
+
+    [data-theme="dark"] {
+      --brand: #081a29;
+      --brand-dark: #040e17;
+      --cyan: #3cd4ff;
+      --cyan-soft: #0d2838;
+      --ink: #f1f5f9;
+      --ink-soft: #94a3b8;
+      --ink-dim: #64748b;
+      --paper: #0b141d;
+      --bg-canvas: #0c1824;
+      --card: #121f2d;
+      --line-border: #1c3044;
+      --grid-line: rgba(147, 197, 253, 0.055);
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; width: 100%; overflow: hidden; font-family: var(--f-sans); background: var(--paper); color: var(--ink); }
+
+    /* Layout */
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      height: 100dvh;
+      position: relative;
+    }
+
+    /* Top Masthead */
+    .masthead {
+      background: var(--brand);
+      color: #ffffff;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 3px solid var(--cyan);
+      z-index: 30;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .emblem-svg {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-title {
+      font-family: var(--f-serif);
+      font-weight: 900;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      opacity: 0.85;
+      font-weight: 500;
+    }
+
+    /* Role Filter Pills */
+    .role-pills {
+      display: flex;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 3px;
+      gap: 4px;
+    }
+
+    .role-btn {
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .role-btn.active {
+      background: var(--cyan);
+      color: #0b3557;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(12, 188, 245, 0.4);
+    }
+
+    .role-btn:hover:not(.active) {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+    }
+
+    /* Search & Tools */
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 220px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 7px 12px 7px 32px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 0.82rem;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-input::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .search-input:focus {
+      background: #ffffff;
+      color: #14283a;
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(12, 188, 245, 0.3);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .search-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--card);
+      border: 1px solid var(--line-border);
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      max-height: 340px;
+      overflow-y: auto;
+      z-index: 50;
+      display: none;
+    }
+
+    .search-dropdown.show {
+      display: block;
+    }
+
+    .search-item {
+      padding: 9px 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line-border);
+      font-size: 0.84rem;
+      color: var(--ink);
+      transition: background 0.15s;
+    }
+
+    .search-item:last-child { border-bottom: none; }
+    .search-item:hover { background: var(--cyan-soft); }
+
+    .tool-btn {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .tool-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-1px);
+    }
+
+    .tool-btn .badge-count {
+      background: var(--cyan);
+      color: #0b3557;
+      padding: 1px 6px;
+      border-radius: 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    /* Main World Display */
+    .world {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Retro LED Display Board */
+    .led-board {
+      background: var(--led-bg);
+      border-bottom: 2px solid #202b36;
+      padding: 6px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: var(--f-mono);
+      font-size: 0.82rem;
+      color: var(--led-amber);
+      z-index: 10;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.8);
+      flex-shrink: 0;
+    }
+
+    .led-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .led-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--led-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--led-green);
+      animation: blink 1.2s infinite ease-in-out;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .led-line-badge {
+      background: #1c2630;
+      border: 1px solid #304152;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .led-ticker-wrap {
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      height: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .led-ticker {
+      display: inline-block;
+      white-space: nowrap;
+      padding-left: 100%;
+      animation: ticker 32s linear infinite;
+      letter-spacing: 0.06em;
+      text-shadow: 0 0 6px rgba(255, 176, 46, 0.5);
+    }
+
+    @keyframes ticker {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+
+    .led-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .led-sound-btn {
+      background: transparent;
+      border: 1px solid #304152;
+      color: var(--led-amber);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .led-sound-btn:hover {
+      background: #202b36;
+    }
+
+    /* World Body: Map and Drawer Flex Side-by-Side (Zero Overlap on Desktop) */
+    .world-body {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    /* SVG Canvas Wrap with Full-Bleed Blueprint Grid */
+    .map-wrap {
+      flex: 1;
+      min-width: 0;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-canvas);
+      background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 38px 38px;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: flex 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .map-wrap:active {
+      cursor: grabbing;
+    }
+
+    svg#map {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: transparent;
+      overflow: visible;
+    }
+
+    /* Floating Zoom & Overview Controls */
+    .zoom-controls {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 18;
+    }
+
+    .zoom-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--line-border);
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--ink);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.18s ease;
+    }
+
+    [data-theme="dark"] .zoom-btn {
+      background: rgba(18, 31, 45, 0.9);
+      color: var(--ink);
+    }
+
+    .zoom-btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .zoom-btn.active-mode {
+      border-color: var(--cyan);
+      background: var(--cyan-soft);
+      color: var(--brand);
+    }
+    [data-theme="dark"] .zoom-btn.active-mode {
+      color: var(--cyan);
+    }
+
+    /* Blueprint Grid (legacy helper kept for compatibility) */
+    .grid-line {
+      stroke: rgba(11, 53, 87, 0.045);
+      stroke-width: 0.6px;
+    }
+    [data-theme="dark"] .grid-line {
+      stroke: rgba(147, 197, 253, 0.05);
+    }
+
+    /* Central Watermark & Route Legend */
+    .watermark-main {
+      font-family: var(--f-serif);
+      font-size: 56px;
+      font-weight: 900;
+      fill: var(--ink);
+      opacity: 0.085;
+      letter-spacing: 0.08em;
+      pointer-events: none;
+      user-select: none;
+    }
+    [data-theme="dark"] .watermark-main {
+      fill: #ffffff;
+      opacity: 0.12;
+    }
+
+    .watermark-sub {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 12px;
+      font-weight: 700;
+      fill: var(--ink);
+      opacity: 0.28;
+      letter-spacing: 0.22em;
+      pointer-events: none;
+      user-select: none;
+    }
+    [data-theme="dark"] .watermark-sub {
+      fill: #93c5fd;
+      opacity: 0.38;
+    }
+
+    .central-legend-group {
+      pointer-events: none;
+      user-select: none;
+    }
+    .central-legend-text {
+      font-family: var(--f-sans);
+      font-size: 15.5px;
+      font-weight: 700;
+      fill: var(--ink);
+      letter-spacing: 0.5px;
+    }
+    [data-theme="dark"] .central-legend-text {
+      fill: #f1f5f9;
+    }
+
+    /* Metro Tracks */
+    .track-bg {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.15;
+    }
+
+    .track-line {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: opacity 0.3s ease, stroke-width 0.2s ease;
+      cursor: pointer;
+    }
+
+    .track-line:hover {
+      stroke-width: 13px !important;
+    }
+
+    .track-connector {
+      fill: none;
+      stroke: #8da4b5;
+      stroke-width: 3.5px;
+      stroke-dasharray: 6 6;
+      stroke-linecap: round;
+      opacity: 0.65;
+    }
+
+    /* Terminus Badges */
+    .terminus-badge {
+      pointer-events: none;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.18));
+    }
+    .terminus-text {
+      font-family: var(--f-mono);
+      font-size: 12.5px;
+      font-weight: 800;
+      fill: #ffffff;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+
+    /* Station Nodes */
+    .station-node {
+      cursor: pointer;
+    }
+
+    .station-node:hover .station-ring {
+      stroke-width: 4.2px;
+      filter: drop-shadow(0 0 7px var(--cyan));
+    }
+
+    .station-node:hover .transfer-outer-ring {
+      stroke-width: 3.8px;
+      filter: drop-shadow(0 0 8px var(--cyan));
+    }
+
+    .station-node:hover .station-label-cn {
+      fill: var(--cyan);
+    }
+
+    .station-hit-area {
+      fill: transparent;
+      cursor: pointer;
+      pointer-events: all;
+    }
+
+    /* Standard Station */
+    .station-ring {
+      fill: var(--card);
+      stroke-width: 3.2px;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+      transition: all 0.2s ease;
+    }
+
+    .station-inner {
+      transition: fill 0.2s ease;
+    }
+
+    /* Transfer Interchange Hub */
+    .transfer-outer-ring {
+      fill: var(--card);
+      stroke: var(--ink);
+      stroke-width: 2.8px;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.22));
+    }
+    [data-theme="dark"] .transfer-outer-ring {
+      stroke: #f1f5f9;
+    }
+
+    .transfer-mid-ring {
+      fill: none;
+      stroke: var(--ink);
+      stroke-width: 1.8px;
+    }
+    [data-theme="dark"] .transfer-mid-ring {
+      stroke: #f1f5f9;
+    }
+
+    .transfer-core-dot {
+      transition: transform 0.2s ease;
+    }
+
+    /* Station Labels (Dual-line / Multi-line & Interactive) */
+    .station-label-cn {
+      font-family: var(--f-sans);
+      font-size: 17px;
+      font-weight: 700;
+      fill: var(--ink);
+      paint-order: stroke fill;
+      stroke: var(--bg-canvas);
+      stroke-width: 4.5px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      letter-spacing: -0.01em;
+      pointer-events: all;
+      cursor: pointer;
+      transition: opacity 0.2s ease, fill 0.2s ease;
+    }
+
+    .station-label-en {
+      font-family: var(--f-sans);
+      font-size: 11.2px;
+      font-weight: 600;
+      fill: var(--ink-soft);
+      paint-order: stroke fill;
+      stroke: var(--bg-canvas);
+      stroke-width: 3.2px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      letter-spacing: 0.02em;
+      pointer-events: all;
+      cursor: pointer;
+      transition: opacity 0.2s ease, fill 0.2s ease;
+    }
+
+    .station-node:hover .station-label-cn {
+      fill: var(--cyan);
+    }
+    .station-node:hover .station-label-en {
+      fill: var(--ink);
+    }
+
+    /* Selected Station Target Reticle */
+    .target-reticle {
+      pointer-events: none;
+      animation: reticle-spin 14s linear infinite;
+      transform-origin: 0 0;
+    }
+
+    @keyframes reticle-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .target-reticle circle {
+      stroke: var(--ink);
+      stroke-width: 2px;
+      stroke-dasharray: 5 4;
+      opacity: 0.85;
+    }
+    [data-theme="dark"] .target-reticle circle {
+      stroke: #f1f5f9;
+    }
+
+    .target-reticle line {
+      stroke: var(--ink);
+      stroke-width: 2px;
+      stroke-linecap: round;
+      opacity: 0.85;
+    }
+    [data-theme="dark"] .target-reticle line {
+      stroke: #f1f5f9;
+    }
+
+    /* Live Animated Realistic Train */
+    #train {
+      pointer-events: none;
+      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.32));
+    }
+
+    .train-body {
+      fill: url(#trainBodyGrad);
+      stroke: #14283a;
+      stroke-width: 1.8;
+      stroke-linejoin: round;
+    }
+
+    .train-headlight {
+      fill: #fef08a;
+      filter: drop-shadow(0 0 5px #ffd000);
+    }
+
+    /* Arrival Pulse Ring */
+    .pulse-ring {
+      fill: none;
+      stroke: var(--cyan);
+      stroke-width: 2.5;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pulse-ring.animating {
+      animation: pulse-animation 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+
+    @keyframes pulse-animation {
+      0% {
+        r: 12;
+        opacity: 0.9;
+        stroke-width: 3;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        r: 34;
+        opacity: 0;
+        stroke-width: 1;
+      }
+    }
+
+    /* Station Drawer (Side-by-side on desktop with margin animation, zero map overlap!) */
+    .drawer {
+      width: var(--drawer-w);
+      max-width: 100%;
+      height: 100%;
+      min-height: 0;
+      flex-shrink: 0;
+      background: var(--card);
+      border-left: 1px solid var(--line-border);
+      box-shadow: var(--shadow-lg);
+      z-index: 25;
+      display: flex;
+      flex-direction: column;
+      margin-right: calc(-1 * var(--drawer-w));
+      transition: margin-right 0.35s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    .drawer.open {
+      margin-right: 0;
+    }
+
+    .drawer-header {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid var(--line-border);
+      position: relative;
+      background: linear-gradient(to bottom, var(--paper), var(--card));
+      flex-shrink: 0;
+    }
+
+    .drawer-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0,0,0,0.06);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      transition: all 0.2s;
+    }
+
+    .drawer-close:hover {
+      background: rgba(0,0,0,0.15);
+      color: var(--ink);
+    }
+
+    .drawer-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .station-code-pill {
+      padding: 3px 10px;
+      border-radius: 12px;
+      color: #ffffff;
+      font-family: var(--f-mono);
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.05em;
+    }
+
+    .station-line-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+    }
+
+    .drawer-title {
+      font-family: var(--f-serif);
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .drawer-en {
+      font-family: var(--f-mono);
+      font-size: 0.8rem;
+      color: var(--ink-dim);
+      margin-bottom: 8px;
+    }
+
+    .drawer-sub {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      line-height: 1.4;
+    }
+
+    .drawer-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .drawer-action-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--line-border);
+      background: var(--paper);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .drawer-action-btn:hover {
+      background: var(--cyan-soft);
+      border-color: var(--cyan);
+    }
+
+    .drawer-action-btn.active {
+      background: var(--cyan);
+      color: #0b3557;
+      border-color: var(--cyan);
+    }
+
+    .drawer-body {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      padding: 18px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* Elegant Slim Custom Scrollbar for Drawer */
+    .drawer-body::-webkit-scrollbar {
+      width: 6px;
+    }
+    .drawer-body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .drawer-body::-webkit-scrollbar-thumb {
+      background: rgba(140, 160, 180, 0.28);
+      border-radius: 4px;
+    }
+    .drawer-body::-webkit-scrollbar-thumb:hover {
+      background: rgba(140, 160, 180, 0.48);
+    }
+    [data-theme="dark"] .drawer-body::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.25);
+    }
+    [data-theme="dark"] .drawer-body::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.45);
+    }
+
+    /* Section in Drawer */
+    .drawer-section-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    /* Exit Cards */
+    .exit-card {
+      background: var(--paper);
+      border: 1px solid var(--line-border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .exit-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .exit-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .exit-pill {
+      background: #14283a;
+      color: #ffffff;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .exit-tag {
+      background: rgba(12, 188, 245, 0.15);
+      color: #0a88b5;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    [data-theme="dark"] .exit-tag {
+      background: rgba(60, 212, 255, 0.2);
+      color: #3cd4ff;
+    }
+
+    .exit-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .exit-desc {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      line-height: 1.4;
+    }
+
+    .exit-link-btn {
+      margin-top: 4px;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--brand);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .exit-link-btn:hover {
+      background: var(--cyan);
+      color: #0b3557;
+      transform: translateX(2px);
+    }
+
+    /* Task Checklist in Drawer */
+    .task-item {
+      background: var(--card);
+      border: 1px solid var(--line-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .task-item:hover {
+      background: var(--paper);
+    }
+
+    .task-checkbox {
+      margin-top: 2px;
+      width: 17px;
+      height: 17px;
+      accent-color: var(--lF);
+      cursor: pointer;
+    }
+
+    .task-text {
+      font-size: 0.85rem;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+
+    .task-item.completed .task-text {
+      text-decoration: line-through;
+      color: var(--ink-dim);
+    }
+
+    /* Route Strip at Bottom */
+    .route-strip {
+      background: var(--card);
+      border-top: 1px solid var(--line-border);
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow-x: auto;
+      z-index: 15;
+      flex-shrink: 0;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.04);
+    }
+
+    .route-strip::-webkit-scrollbar {
+      height: 4px;
+    }
+    .route-strip::-webkit-scrollbar-thumb {
+      background: var(--line-border);
+      border-radius: 4px;
+    }
+
+    .strip-line-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--ink-soft);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .strip-nodes {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .strip-node-btn {
+      border: 1px solid var(--line-border);
+      background: var(--paper);
+      padding: 4px 10px;
+      border-radius: 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink);
+      white-space: nowrap;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+
+    .strip-node-btn:hover {
+      border-color: var(--cyan);
+      background: var(--cyan-soft);
+    }
+
+    .strip-node-btn.active {
+      background: #14283a;
+      color: #ffffff;
+      border-color: #14283a;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 26, 38, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--card);
+      border-radius: 18px;
+      width: 100%;
+      max-width: 580px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--line-border);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      animation: modal-pop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modal-pop {
+      0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-header {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--card);
+      z-index: 2;
+    }
+
+    .modal-title {
+      font-family: var(--f-serif);
+      font-size: 1.25rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--ink-soft);
+      padding: 4px;
+    }
+
+    .modal-body {
+      padding: 20px 22px;
+      flex: 1;
+    }
+
+    /* Quiz Option Buttons */
+    .quiz-question {
+      margin-bottom: 20px;
+    }
+
+    .quiz-q-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .quiz-opt-btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line-border);
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 0.86rem;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .quiz-opt-btn:hover {
+      border-color: var(--cyan);
+      background: var(--cyan-soft);
+    }
+
+    .quiz-opt-btn.selected {
+      background: var(--brand);
+      color: #ffffff;
+      border-color: var(--brand);
+      font-weight: 700;
+    }
+
+    .quiz-result-box {
+      background: linear-gradient(135deg, rgba(12, 188, 245, 0.12), rgba(124, 77, 204, 0.15));
+      border: 1px solid var(--cyan);
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 18px;
+      display: none;
+    }
+
+    .quiz-result-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--brand);
+      margin-bottom: 6px;
+    }
+
+    [data-theme="dark"] .quiz-result-title {
+      color: var(--cyan);
+    }
+
+    .quiz-result-desc {
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
+    }
+
+    .quiz-jump-btn {
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s;
+    }
+
+    .quiz-jump-btn:hover {
+      background: var(--cyan);
+      color: #0b3557;
+    }
+
+    /* Global Progress Bar */
+    .progress-bar-wrap {
+      background: var(--paper);
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 12px 0 18px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--lA), var(--lF), var(--lC), var(--lM));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Compact Desktop Responsive Styles (preserve single-row masthead & wide map space) */
+    @media (max-width: 1240px) {
+      :root {
+        --drawer-w: 350px;
+      }
+      .masthead {
+        padding: 8px 14px;
+        gap: 8px;
+      }
+      .brand-title { font-size: 1.12rem; }
+      .role-btn {
+        padding: 4px 9px;
+        font-size: 0.78rem;
+      }
+      .search-box { width: 165px; }
+      .tool-btn {
+        padding: 5px 9px;
+        font-size: 0.78rem;
+      }
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 900px) {
+      .masthead {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 8px 12px;
+      }
+      .brand-group { justify-content: space-between; }
+      .role-pills { overflow-x: auto; padding: 2px; }
+      .search-box { width: 100%; }
+
+      .world-body {
+        flex-direction: column;
+      }
+
+      .zoom-controls {
+        top: 12px;
+        bottom: auto;
+        right: 12px;
+      }
+      
+      .drawer {
+        position: absolute;
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        margin-right: 0;
+        max-height: 58vh;
+        border-left: none;
+        border-top: 1px solid var(--line-border);
+        border-radius: 20px 20px 0 0;
+        transform: translateY(100%);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .drawer.open {
+        transform: translateY(0);
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- Top Masthead -->
+    <header class="masthead">
+      <div class="brand-group">
+        <a href="#about" class="logo-badge" title="回到起點 認識物治">
+          <svg class="emblem-svg" viewBox="0 0 100 100">
+            <!-- Medical Cross + Metro Nodes Motif -->
+            <rect x="5" y="5" width="90" height="90" rx="20" fill="#0cbcf5" />
+            <path d="M50 20 V80 M20 50 H80" stroke="#ffffff" stroke-width="14" stroke-linecap="round" />
+            <circle cx="50" cy="50" r="14" fill="#0b3557" />
+            <circle cx="50" cy="50" r="7" fill="#ffffff" />
+          </svg>
+          <div class="brand-text">
+            <span class="brand-title">義守物治線 <span style="font-size:0.75rem; background:var(--cyan); color:#0b3557; padding:2px 6px; border-radius:6px; font-weight:800;">PT METRO</span></span>
+            <span class="brand-sub">義守大學物理治療學系 ｜ 互動導覽路網</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Role Filters -->
+      <nav class="role-pills" aria-label="身分路線篩選">
+        <button class="role-btn active" data-role="all">全部路線</button>
+        <button class="role-btn" data-role="highschool">高中生入學</button>
+        <button class="role-btn" data-role="freshman">大一新鮮人</button>
+        <button class="role-btn" data-role="clinical">四大專科/實習</button>
+        <button class="role-btn" data-role="life">課外學習活動</button>
+      </nav>
+
+      <!-- Tools & Search -->
+      <div class="toolbar-group">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="搜尋站點、出口資源..." autocomplete="off">
+          <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+        <button id="tasksBtn" class="tool-btn" title="查看物治師必辦清單">
+          📋 待辦 <span id="globalTaskBadge" class="badge-count">0/25</span>
+        </button>
+        <button id="quizBtn" class="tool-btn" title="30秒物治定向小測驗">🧭 測驗</button>
+        <button id="dirBtn" class="tool-btn" title="站點總覽索引">🗺️ 站點</button>
+        <button id="themeToggle" class="tool-btn" title="切換深淺色模式">🌓</button>
+      </div>
+    </header>
+
+    <!-- World Display -->
+    <main class="world">
+      <!-- Retro LED Departure Board -->
+      <section class="led-board">
+        <div class="led-status">
+          <span class="led-dot"></span>
+          <span id="ledLineBadge" class="led-line-badge">全線運行中</span>
+          <span id="ledTrainStatus" style="font-weight:700;">列車就緒</span>
+        </div>
+        <div class="led-ticker-wrap">
+          <div id="ledTicker" class="led-ticker">
+            ✦ 歡迎搭乘 義守物治線 ISU PT METRO ✦ 目前路線：[臨床四大專科線] ✦ 列車即將進站：C05 授證典禮站 ✦ 恭賀！114年第二次物理治療師國考再創佳績 ✦ 日本東京見習與澳洲遊學開放報名中 ✦
+          </div>
+        </div>
+        <div class="led-controls">
+          <button id="soundToggle" class="led-sound-btn" title="開關到站提示音效">🔊 音效: 開</button>
+          <button id="cruiseToggle" class="led-sound-btn" title="自動巡航觀光模式">🚆 巡航模式</button>
+        </div>
+      </section>
+
+      <!-- World Body (Side-by-side flex layout) -->
+      <div class="world-body">
+        <!-- SVG Map Canvas -->
+        <div id="mapWrap" class="map-wrap">
+          <svg id="map">
+            <defs>
+              <!-- Station pulse ring animation -->
+              <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- Unified Camera Transform Layer (Single-stage Pan & Zoom) -->
+            <g id="cameraLayer">
+              <!-- Subtle Background Grid Layer (Legacy hook; full-bleed grid rendered on mapWrap) -->
+              <g id="gridLayer"></g>
+
+              <!-- Static Map Content Bounds Group -->
+              <g id="mapContentGroup">
+                <!-- Central Watermark & Route Map Legend -->
+                <g id="decoLayer"></g>
+
+                <!-- Transfer Connector Dashed Lines -->
+                <g id="transfersLayer"></g>
+
+                <!-- Metro Tracks Background Halo -->
+                <g id="tracksHaloLayer"></g>
+
+                <!-- Metro Tracks Foreground -->
+                <g id="tracksLayer"></g>
+
+                <!-- Station Nodes and Labels -->
+                <g id="stationsLayer"></g>
+              </g>
+
+              <!-- Selected Station Reticle with crosshairs and spinning ring -->
+              <g id="targetReticle" transform="translate(-100,-100)" style="display:none; pointer-events:none;">
+                <g class="target-reticle">
+                  <circle r="22" fill="none" />
+                  <line x1="0" y1="-28" x2="0" y2="-19" />
+                  <line x1="0" y1="19" x2="0" y2="28" />
+                  <line x1="-28" y1="0" x2="-19" y2="0" />
+                  <line x1="19" y1="0" x2="28" y2="0" />
+                </g>
+              </g>
+
+              <!-- Dynamic Pulse Ring on Target Station -->
+              <circle id="pulseRing" class="pulse-ring" cx="-100" cy="-100" r="16" />
+
+              <!-- Live Realistic Metro Train on Track -->
+              <g id="train" transform="translate(-100,-100)">
+                <defs>
+                  <linearGradient id="trainBeamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ffe066" stop-opacity="0.85" />
+                    <stop offset="30%" stop-color="#ffd000" stop-opacity="0.45" />
+                    <stop offset="100%" stop-color="#ffd000" stop-opacity="0" />
+                  </linearGradient>
+                  <linearGradient id="trainBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="100%" stop-color="#e6ecf2" />
+                  </linearGradient>
+                </defs>
+                <!-- Headlight Forward Light Beam -->
+                <polygon points="20,-2.5 42,-12 42,12 20,2.5" fill="url(#trainBeamGrad)" opacity="0.6" pointer-events="none" />
+                <!-- Underbody Bogies & Track Wheels -->
+                <rect x="-18" y="8" width="36" height="3" rx="1" fill="#1e293b" />
+                <rect x="-15" y="9.5" width="7" height="2.5" rx="1" fill="#475569" />
+                <rect x="8" y="9.5" width="7" height="2.5" rx="1" fill="#475569" />
+                <!-- Aerodynamic Bullet/Metro Body Shell -->
+                <path class="train-body" d="M -18 -9.5 L 12 -9.5 Q 21 -9.5 24 0 Q 21 8.5 12 8.5 L -18 8.5 Q -21 8.5 -21 6 L -21 -7 Q -21 -9.5 -18 -9.5 Z" />
+                <!-- Streamlined Roof AC Fairing -->
+                <rect x="-10" y="-12.5" width="20" height="3" rx="1.5" fill="#94a3b8" stroke="#334155" stroke-width="0.8" />
+                <!-- Dynamic Route Livery Stripe -->
+                <path id="trainStripe" d="M -20 3.2 L 15 3.2 Q 19 3.2 21 0 Q 19 5.8 15 5.8 L -20 5.8 Z" fill="#0cbcf5" />
+                <!-- Cockpit Sloped Windshield with Reflection -->
+                <path d="M 12.5 -7.5 L 18 -1.5 Q 19.5 0 18 1.5 L 12.5 6.5 Z" fill="#0b2545" />
+                <path d="M 13.5 -5.5 L 17 -1.5 L 15.5 -1.5 L 13 -5.5 Z" fill="rgba(255,255,255,0.45)" />
+                <!-- Passenger Windows & Doors -->
+                <rect x="-16.5" y="-5.5" width="6.5" height="6.5" rx="1.5" fill="#0b2545" />
+                <rect x="-8.5" y="-6.5" width="6.5" height="12.5" rx="1" fill="#f1f5f9" stroke="#475569" stroke-width="0.8" />
+                <rect x="-7.5" y="-5" width="4.5" height="5" rx="0.8" fill="#0b2545" />
+                <line x1="-5.25" y1="-6.5" x2="-5.25" y2="6" stroke="#94a3b8" stroke-width="0.6" />
+                <rect x="0" y="-5.5" width="8" height="6.5" rx="1.5" fill="#0b2545" />
+                <!-- Dual LED Headlights -->
+                <circle class="train-headlight" cx="21" cy="-2.5" r="1.6" />
+                <circle class="train-headlight" cx="21" cy="2.5" r="1.6" />
+              </g>
+            </g>
+          </svg>
+
+          <!-- Floating Zoom & Overview Buttons -->
+          <div class="zoom-controls">
+            <button id="zoomIn" class="zoom-btn" title="放大 (+)">+</button>
+            <button id="zoomOut" class="zoom-btn" title="縮小 (−)">−</button>
+            <button id="zoomReset" class="zoom-btn" title="全圖滿版總覽 (Reset)">⌖</button>
+          </div>
+        </div>
+
+        <!-- Station Info Drawer -->
+        <aside id="drawer" class="drawer" aria-label="車站詳細資源抽屜">
+          <div class="drawer-header">
+            <button id="drawerClose" class="drawer-close" title="關閉面板">✕</button>
+            <div class="drawer-badges">
+              <span id="dCode" class="station-code-pill" style="background:var(--lA);">A01</span>
+              <span id="dLineName" class="station-line-name">入學探索線</span>
+            </div>
+            <h2 id="dTitle" class="drawer-title">認識物治</h2>
+            <div id="dEn" class="drawer-en">About PT</div>
+            <p id="dSub" class="drawer-sub">深耕南台灣醫療復健，培育具備專業知能與國際視野之物理治療師</p>
+            <div class="drawer-actions">
+              <button id="saveBtn" class="drawer-action-btn" title="收藏此車站">⭐ 收藏此站</button>
+              <button id="prevStationBtn" class="drawer-action-btn">◀ 上一站</button>
+              <button id="nextStationBtn" class="drawer-action-btn">下一站 ▶</button>
+            </div>
+          </div>
+
+          <div class="drawer-body">
+            <!-- Station Checklists -->
+            <div id="dTasksWrap">
+              <div class="drawer-section-title">
+                <span>📋 本站學習檢核與待辦</span>
+                <span id="dTaskStats" style="font-size:0.75rem; color:var(--lF);">0/1 完成</span>
+              </div>
+              <div id="dTasksList"></div>
+            </div>
+
+            <!-- Exits -->
+            <div>
+              <div class="drawer-section-title">
+                <span>🚪 捷運出口資源直通 (Exits)</span>
+                <span style="font-size:0.75rem; color:var(--ink-dim);">點擊直連系網</span>
+              </div>
+              <div id="dExitsList"></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- Route Strip at Bottom -->
+    <nav id="routeStrip" class="route-strip" aria-label="當前路線站點列表">
+      <div class="strip-line-label">
+        <span id="stripLineDot" style="width:10px; height:10px; border-radius:50%; background:var(--lC);"></span>
+        <span id="stripLineName">四大專科線</span>
+      </div>
+      <div id="stripNodes" class="strip-nodes"></div>
+    </nav>
+  </div>
+
+  <!-- Interactive Quiz Modal -->
+  <div id="quizModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">🧭 30秒物治定向探索測驗</h3>
+        <button id="quizClose" class="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.86rem; color:var(--ink-soft); margin-bottom:16px;">
+          回答 3 道簡單問題，為您推薦最適合的物理治療首發學習車站與探索路線！
+        </p>
+
+        <!-- Q1 -->
+        <div class="quiz-question" data-q="1">
+          <div class="quiz-q-title">Q1. 你目前的階段與身分？</div>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" data-val="highschool">A. 高中生 / 家長（想了解申請入學、備審與特色）</button>
+            <button class="quiz-opt-btn" data-val="freshman">B. 大一新生（即將報到，想搞懂基礎生醫、選課與生活）</button>
+            <button class="quiz-opt-btn" data-val="clinical">C. 在校生 / 實習生（鑽研四大專科、實習與國考）</button>
+            <button class="quiz-opt-btn" data-val="life">D. 運動愛好者（對場邊防護、貼紮與系隊活動感興趣）</button>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-question" data-q="2">
+          <div class="quiz-q-title">Q2. 你對物理治療哪個面向最感興趣？</div>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" data-val="sports">A. 運動傷害防護、場邊貼紮急救與肌力訓練</button>
+            <button class="quiz-opt-btn" data-val="ortho">B. 骨科肌肉骨骼、脊椎徒手矯正與姿勢調整</button>
+            <button class="quiz-opt-btn" data-val="hospital">C. 醫院臨床實習、海外見習與專技高考考照</button>
+            <button class="quiz-opt-btn" data-val="assist">D. 智慧醫療、外骨骼科技輔具與創新發明專利</button>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-question" data-q="3">
+          <div class="quiz-q-title">Q3. 你最想立即獲取的資訊？</div>
+          <div class="quiz-options">
+            <button class="quiz-opt-btn" data-val="admit">A. 備審資料審查指引與入學管道簡章</button>
+            <button class="quiz-opt-btn" data-val="whitecoat">B. 神聖授證典禮、白袍宣誓與實習作業要點</button>
+            <button class="quiz-opt-btn" data-val="club">C. 系學會迎新宿營、制服趴與全國大復盃盛事</button>
+            <button class="quiz-opt-btn" data-val="career">D. 物理治療所開業、就業薪資與傑出系友經驗</button>
+          </div>
+        </div>
+
+        <!-- Quiz Result Box -->
+        <div id="quizResultBox" class="quiz-result-box">
+          <div id="quizResultTitle" class="quiz-result-title">推薦起點：C01 骨科物理治療站</div>
+          <div id="quizResultDesc" class="quiz-result-desc">您具備敏銳的力學直覺與助人熱忱！建議搭乘臨床四大專科線，深入探討徒手矯正與肌力平衡。</div>
+          <button id="quizJumpBtn" class="quiz-jump-btn">🚀 立即啟動列車出發！</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Tasks Modal -->
+  <div id="tasksModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">📋 物治師養成全攻略待辦清單</h3>
+        <button id="tasksClose" class="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:0.86rem; color:var(--ink-soft);">整體任務完成度</span>
+          <span id="modalTaskStats" style="font-weight:700; color:var(--lF);">0 / 24 (0%)</span>
+        </div>
+        <div class="progress-bar-wrap">
+          <div id="modalProgressBar" class="progress-bar-fill"></div>
+        </div>
+        <div id="globalTasksList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Station Directory Modal -->
+  <div id="dirModal" class="modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">🗺️ 全線車站與出口總覽索引</h3>
+        <button id="dirClose" class="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom:12px; display:flex; gap:8px;">
+          <button id="dirFilterAll" class="drawer-action-btn active">全部 23 站</button>
+          <button id="dirFilterSaved" class="drawer-action-btn">⭐ 僅看已收藏</button>
+        </div>
+        <div id="dirGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:10px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Embedded Station & Route Data -->
+  <script>
+    const STATIONS = {"about": {"id": "about", "code": "A01", "line": "A", "n": "認識物治", "en": "About PT", "x": 1.8, "y": 1.5, "lab": "s", "sub": "深耕南台灣、培育專業與國際物理治療師", "tasks": [["t_about_1", "瀏覽系所簡介、教育目標與核心能力"]], "exits": [{"num": "出口 1", "title": "學系簡介與沿革", "desc": "創於 1990 年，深耕南台灣物理治療專業，培育超過千名專業人才。", "url": "https://pt.isu.edu.tw/page/學系簡介-CdANwfAHPx6t", "tag": "學系簡介"}, {"num": "出口 2", "title": "教育目標與核心能力", "desc": "培育博雅、溝通、專業及終身學習之物理治療菁英人才與核心培育指標。", "url": "https://pt.isu.edu.tw/page/教育目標-IQWKy5ZtFMXe", "tag": "教育目標"}, {"num": "出口 3", "title": "師資陣容與專長領域", "desc": "專任教授、副教授與助理教授臨床專長、研究計畫與聯絡資訊。", "url": "https://pt.isu.edu.tw/teachers/faculty", "tag": "專任師資"}, {"num": "出口 4", "title": "行政人員與系辦公室", "desc": "義守大學醫學院區 A 棟 5 樓系辦公室行政助理、聯絡電話與服務事項。", "url": "https://pt.isu.edu.tw/teachers/admin", "tag": "行政團隊"}, {"num": "出口 5", "title": "學系章則與法規專區", "desc": "物理治療學系章則、法規辦法、委員會組織與校內規章文件。", "url": "https://pt.isu.edu.tw/page/章則專區-5p2e0VPOQf7c", "tag": "章則法規"}]}, "guide": {"id": "guide", "code": "A02", "line": "A", "n": "選才指引", "en": "Admissions & ColleGo", "x": 4.2, "y": 1.5, "lab": "s", "sub": "高中生選才指引、學系特色與學長姐心得分享", "tasks": [["t_guide_1", "查詢 ColleGo! 物治系選才高中指引與核心能力"]], "exits": [{"num": "出口 1", "title": "ColleGo! 大學選才系統", "desc": "教育部大學選才系統官方指引，深入解析物治系核心特質與學系亮點。", "url": "https://collego.edu.tw/Highschool/DepartmentIntro?dept_id=045103", "tag": "ColleGo!"}, {"num": "出口 2", "title": "高中生認識專區", "desc": "義守大學高中生專屬專區，包含各學院學系導覽、選系指引與體驗營。", "url": "https://www.isu.edu.tw/highschool", "tag": "高中生專區"}, {"num": "出口 3", "title": "學長姐的話經驗談", "desc": "在校學長姐親自分享從大一到大四的真實就讀心得、實習與求學歷程。", "url": "https://pt.isu.edu.tw/page/學長姐的話-ol5uAD6QUNF1", "tag": "學長姐的話"}]}, "portfolio": {"id": "portfolio", "code": "A03", "line": "A", "n": "備審指引", "en": "Application Portfolio", "x": 6.6, "y": 1.5, "lab": "s", "sub": "學習歷程檔案審查重點與準備指引", "tasks": [["t_portfolio_1", "閱讀高中學習歷程指引與備審重點"]], "exits": [{"num": "出口 1", "title": "申請入學書審資料指引", "desc": "官方公布 114 學年度個人申請入學書面審查資料重點準備項目與評分指引 (PDF)。", "url": "https://pt.isu.edu.tw/page/申請入學書面審查資料準備指引-GutpQfKv8r6n", "tag": "審查指引"}, {"num": "出口 2", "title": "大學甄選入學專區", "desc": "繁星推薦與個人申請入學簡章、招生名額、檢定標準與歷年分發統計。", "url": "https://www.isu.edu.tw/admissions", "tag": "招生專區"}, {"num": "出口 3", "title": "高中學習歷程輔導指引", "desc": "指導如何在多元表現、自主學習與專題探索中呈現對物治醫護的熱忱。", "url": "https://collego.edu.tw/Highschool/DepartmentIntro?dept_id=045103", "tag": "學習歷程"}]}, "admit": {"id": "admit", "code": "A04", "line": "A", "n": "入學管道", "en": "Admissions Channels", "x": 9.0, "y": 1.5, "lab": "n", "sub": "繁星推薦、申請入學、分發入學與轉學考試", "isTransfer": true, "tasks": [["t_admit_1", "確認繁星、申請或分發管道時程與簡章"]], "exits": [{"num": "出口 1", "title": "本國生招生資訊管道", "desc": "大學甄選、分發入學、寒暑假轉學考招生管道與重要日程簡章公告。", "url": "https://www.isu.edu.tw/admissions", "tag": "本國招生"}, {"num": "出口 2", "title": "境外生國際招生專區", "desc": "國際學生、港澳僑生與外國學生來台就讀學士班申請簡章與獎學金方案。", "url": "https://oica.ishouuniversity.com/", "tag": "境外招生"}, {"num": "出口 3", "title": "校內法規與轉系申請", "desc": "義守大學教務處轉系、雙主修、輔系法規辦法與學生手冊規章查詢。", "url": "https://law.isu.edu.tw/law/", "tag": "法規規章"}]}, "anatomy": {"id": "anatomy", "code": "F01", "line": "F", "n": "機能&動作解剖、生理", "en": "Functional Anatomy & Physiology", "x": 2.2, "y": 4.2, "lab": "s", "sub": "人體骨骼肌肉架構、機能解剖學與基礎生理機轉", "tasks": [["t_anatomy_1", "認識人體骨骼關節標本與模型操作規範"]], "exits": [{"num": "出口 1", "title": "解剖學與生理學課程地圖", "desc": "人體解剖學暨實習、生理學暨實習大一必修架構與歷年課表 (PDF)。", "url": "https://pt.isu.edu.tw/page/課程規劃-oOXGltsYImNO", "tag": "核心課程"}, {"num": "出口 2", "title": "醫學院基礎醫學共同必修", "desc": "義守大學醫學院大體解剖學、組織學等基礎醫學核心必修課程架構。", "url": "https://aa.isu.edu.tw/page/preview-fIrRdVQlYsTx", "tag": "基礎醫學"}, {"num": "出口 3", "title": "動作解剖與骨骼標本模型教室", "desc": "專業人體骨骼關節標本、解剖模型與大體解剖教學場域空間導覽。", "url": "https://pt.isu.edu.tw/page/特色場域-bkiJJ8bTot0Q", "tag": "特色場域"}], "lines": ["機能&動作解剖", "生理"]}, "biomech": {"id": "biomech", "code": "F02", "line": "F", "n": "肌動學、生物力學", "en": "Kinesiology & Biomechanics", "x": 5.0, "y": 4.2, "lab": "s", "sub": "人體動作力學、關節力矩力線、步態力學與動作分析", "tasks": [["t_biomech_1", "掌握上下肢肌肉力線與人體正常步態週期分期"]], "exits": [{"num": "出口 1", "title": "肌動學暨實習修課指引", "desc": "肌動學、生物力學暨實習、人體關節運動學與動作力線分析課綱。", "url": "https://pt.isu.edu.tw/page/課程規劃-oOXGltsYImNO", "tag": "力學課程"}, {"num": "出口 2", "title": "3D動作分析與生物力學實驗室", "desc": "光學紅外線動作捕捉系統、測力板與高階動作力學分析儀器設備。", "url": "https://pt.isu.edu.tw/page/特色場域-bkiJJ8bTot0Q", "tag": "特色場域"}, {"num": "出口 3", "title": "國科會大專生研究與學術成果", "desc": "人體動作力學研究成果、大專生專題研究計畫與學術競賽榮譽榜。", "url": "https://pt.isu.edu.tw/page/優秀表現-f9lOKjp2PSOv", "tag": "研究創新"}], "lines": ["肌動學", "生物力學"]}, "modalities": {"id": "modalities", "code": "F03", "line": "F", "n": "基礎評估、物理因子與操作治療", "en": "Basic Assessment, Modalities & Manual Therapy", "x": 7.8, "y": 4.2, "lab": "s", "sub": "關節活動度、徒手肌力、物理因子儀器治療與徒手操作基礎", "tasks": [["t_modalities_1", "練習關節角度量測 (ROM) 與物理因子儀器參數設定"]], "exits": [{"num": "出口 1", "title": "基礎物理治療評估暨實習", "desc": "關節活動度量測 (ROM)、徒手肌力測試 (MMT) 與生命徵象評估教學。", "url": "https://pt.isu.edu.tw/page/課程規劃-oOXGltsYImNO", "tag": "評估實習"}, {"num": "出口 2", "title": "物理因子治療學與儀器操作實務", "desc": "電療、熱療、超音波、水療與電刺激參數安全操作與修課規定。", "url": "https://pt.isu.edu.tw/page/preview-D0HTEMBoViUw", "tag": "物理因子"}, {"num": "出口 3", "title": "操作治療學臨床實作專用空間", "desc": "專業電動升降治療床、徒手操作實習與臨床評估示範教室空間導覽。", "url": "https://pt.isu.edu.tw/page/特色場域-bkiJJ8bTot0Q", "tag": "徒手實作"}, {"num": "出口 4", "title": "CDIO實作與扎根學堂", "desc": "基礎物理治療臨床思維培訓、臨床案例導向學習與扎根學堂互動演練。", "url": "https://pt.isu.edu.tw/page/特色課程-VwnEdLoCmYuG", "tag": "特色教學"}], "lines": ["基礎評估、物理因子", "與操作治療"]}, "ortho": {"id": "ortho", "code": "C01", "line": "C", "n": "骨科物治", "en": "Orthopedic PT", "x": 10.2, "y": 2.7, "lab": "nw", "sub": "關節鬆動術、肌筋膜放鬆、運動治療與脊椎評估", "isTransfer": true, "tasks": [["t_ortho_1", "熟練周邊關節被動活動度與特殊骨科評估理學檢查 (Special Tests)"]], "exits": [{"num": "出口 1", "title": "四大專科特色課程規劃", "desc": "骨科物理治療學、徒手治療技術、關節鬆動與脊椎評估特色課程。", "url": "https://pt.isu.edu.tw/page/特色課程-VwnEdLoCmYuG", "tag": "特色課程"}, {"num": "出口 2", "title": "四年課程地圖與修課路徑", "desc": "骨科物理治療學暨實習必修學分、擋修規定與臨床前實習銜接。", "url": "https://pt.isu.edu.tw/page/課程規劃-oOXGltsYImNO", "tag": "課程地圖"}, {"num": "出口 3", "title": "特色場域（專業實作教室）", "desc": "配備治療床、懸吊訓練系統與徒手實作專屬空間之特色教學場域。", "url": "https://pt.isu.edu.tw/page/特色場域-bkiJJ8bTot0Q", "tag": "特色場域"}]}, "neuro": {"id": "neuro", "code": "C02", "line": "C", "n": "神經物治", "en": "Neurological PT", "x": 14.8, "y": 2.7, "lab": "ne", "sub": "中風腦傷偏癱、帕金森氏症、脊髓損傷與神經誘發技術", "tasks": [["t_neuro_1", "熟練玻巴斯 (Bobath) 與神經肌肉誘發 (PNF) 臨床操作技術"]], "exits": [{"num": "出口 1", "title": "神經物理治療課程進度", "desc": "神經物理治療學暨實習、中風偏癱復健、神經誘發 (PNF) 臨床課程。", "url": "https://pt.isu.edu.tw/page/課程規劃-oOXGltsYImNO", "tag": "課程規劃"}, {"num": "出口 2", "title": "臨床實習專區醫院網絡", "desc": "各大醫學中心神經復健科實習作業規範、手冊與合作教學醫院網絡。", "url": "https://pt.isu.edu.tw/page/實習專區-iBhObl6XRpoE", "tag": "實習專區"}, {"num": "出口 3", "title": "神經復健特色實作示範", "desc": "電動傾斜床、平衡訓練儀與神經動作控制訓練專屬實驗室空間。", "url": "https://pt.isu.edu.tw/page/特色場域-bkiJJ8bTot0Q", "tag": "特色場域"}]}, "cardio": {"id": "cardio", "code": "C03", "line": "C", "n": "心肺物治", "en": "Cardiopulmonary PT", "x": 14.8, "y": 4.8, "lab": "e", "sub": "心臟血管疾病、胸腔呼吸照護、ICU 加護病房重症復健", "tasks": [["t_cardio_1", "練習聽診肺音 (Lung Sounds) 與心電圖 (ECG) 判讀技能"]], "exits": [{"num": "出口 1", "title": "心肺物理治療修課規劃", "desc": "呼吸循環物理治療學暨實習、心肺耐力測試與重症加護病房復健要點。", "url": "https://pt.isu.edu.tw/page/課程規劃-oOXGltsYImNO", "tag": "課程規劃"}, {"num": "出口 2", "title": "智慧醫療與特色課程", "desc": "感測技術、心肺生理監測與虛擬實境技術於臨床復健之特色教學。", "url": "https://pt.isu.edu.tw/page/特色課程-VwnEdLoCmYuG", "tag": "特色課程"}, {"num": "出口 3", "title": "臨床實習專區與規範", "desc": "心肺專科實習考核標準、實習行政作業流程與實習時程公告。", "url": "https://pt.isu.edu.tw/page/實習專區-iBhObl6XRpoE", "tag": "實習專區"}]}, "peds": {"id": "peds", "code": "C04", "line": "C", "n": "小兒物治", "en": "Pediatric PT", "x": 13.5, "y": 6.9, "lab": "s", "sub": "兒童發展里程碑、腦性麻痺、早產兒發展介入與早期療育", "tasks": [["t_peds_1", "熟記粗大動作功能分類系統 (GMFCS) 與兒童發展里程碑時程"]], "exits": [{"num": "出口 1", "title": "小兒物理治療課程規劃", "desc": "兒童發展里程碑、小兒物理治療學暨實習、早療介入與感覺統合課程。", "url": "https://pt.isu.edu.tw/page/課程規劃-oOXGltsYImNO", "tag": "課程規劃"}, {"num": "出口 2", "title": "小兒與早療特色場域", "desc": "配備兒童發展評估工具、遊戲治療空間與感覺統合安全治療教室。", "url": "https://pt.isu.edu.tw/page/特色場域-bkiJJ8bTot0Q", "tag": "特色場域"}, {"num": "出口 3", "title": "全時實習時程與考核", "desc": "小兒物理治療專科臨床實習週數、評核標準與實習手冊規章。", "url": "https://pt.isu.edu.tw/page/實習專區-iBhObl6XRpoE", "tag": "實習專區"}]}, "rehab": {"id": "rehab", "code": "C05", "line": "C", "n": "機能再教育&科技輔具", "en": "Functional Re-education & Assistive Tech", "x": 11.8, "y": 6.9, "lab": "s", "sub": "功能性動作訓練、步態再教育、智慧輔助科技與副木裝具", "tasks": [["t_rehab_1", "掌握行動輔具評估配適與日常生活機能再教育策略"]], "exits": [{"num": "出口 1", "title": "科技輔具與義肢裝具學課程", "desc": "輪椅配適、行動輔具、上肢副木製作與日常生活機能再教育臨床課程。", "url": "https://pt.isu.edu.tw/page/課程規劃-oOXGltsYImNO", "tag": "輔具科技"}, {"num": "出口 2", "title": "特色課程（X+AI 智慧醫療）", "desc": "扎根學堂、CDIO 實作與 AI 運算科技於物理治療感測與復健之實務應用。", "url": "https://pt.isu.edu.tw/page/特色課程-VwnEdLoCmYuG", "tag": "智慧醫療"}, {"num": "出口 3", "title": "智慧輔具與特色場域介紹", "desc": "光學動作捕捉、等速肌力測試、足底壓力與智慧輔具專業空間導覽。", "url": "https://pt.isu.edu.tw/page/特色場域-bkiJJ8bTot0Q", "tag": "特色場域"}, {"num": "出口 4", "title": "輔具發明專利與優秀表現", "desc": "賀系上教授榮獲台灣創新技術博覽會發明金牌、國科會大專生研發計畫成果。", "url": "https://pt.isu.edu.tw/page/優秀表現-f9lOKjp2PSOv", "tag": "研發專利"}], "lines": ["機能再教育", "&科技輔具"]}, "whitecoat": {"id": "whitecoat", "code": "C06", "line": "C", "n": "授證實習檢定", "en": "White Coat Ceremony & OSCE", "x": 10.2, "y": 6.9, "lab": "sw", "sub": "神聖授證儀式、物理治療誓詞、OSCE 臨床技能檢定", "isTransfer": true, "tasks": [["t_coat_1", "審核四大專科實作及格、確認授證資格"], ["t_coat_2", "量測白袍尺寸，準備第22屆授證宣誓"]], "exits": [{"num": "出口 1", "title": "第22屆授證典禮最新公告", "desc": "115 學年度物理治療學系第二十二屆授證典禮官方公告、流程與時程安排。", "url": "https://pt.isu.edu.tw/news/115學年度物理治療學系第二十二屆授證典禮_5月13日（星期三）13時00分至17時30分-YywiEnVWmV4w", "tag": "授證公告"}, {"num": "出口 2", "title": "課程擋修及實習作業要點", "desc": "官方公布物理治療學系擋修規定、臨床實習資格審查要點 (PDF)。", "url": "https://pt.isu.edu.tw/storage/files/sBYPLQbElRVlxO4zE2pQTYBcGfwLeBmaFgTcYTFN.pdf", "tag": "擋修要點"}, {"num": "出口 3", "title": "臨床實習專區首頁", "desc": "實習醫院名單、實習時程表、實習行政手冊與申請制醫院公告完整彙整。", "url": "https://pt.isu.edu.tw/page/實習專區-iBhObl6XRpoE", "tag": "實習專區"}]}, "edagroup": {"id": "edagroup", "code": "M01", "line": "M", "n": "義大醫療體系", "en": "E-Da Healthcare System", "x": 10.2, "y": 9.0, "lab": "s", "sub": "義大醫院、義大癌治療醫院、義大大昌醫院臨床教學強大後盾", "isTransfer": true, "tasks": [["t_edagroup_1", "了解義大醫療體系三大院區物理治療科別與設備"]], "exits": [{"num": "出口 1", "title": "集團資源與醫療體系優勢", "desc": "義联集團龐大醫療事業體系：義大醫院、義大癌治療、義大大昌醫院與體系優勢。", "url": "https://www.e-united.com.tw/relation/index?tag=Medical", "tag": "集團資源"}, {"num": "出口 2", "title": "義大醫療財團法人官網", "desc": "準醫學中心等級之急重症醫療、骨科微創、神經復健與臨床教學團隊。", "url": "https://www.edah.org.tw/", "tag": "義大醫院"}, {"num": "出口 3", "title": "學系簡介（產學合一亮點）", "desc": "就讀義守物治系享有義聯集團醫療體系之深厚實習網絡與優先就業保障。", "url": "https://pt.isu.edu.tw/page/學系簡介-CdANwfAHPx6t", "tag": "學系簡介"}, {"num": "出口 4", "title": "評鑑合格實習醫院名單", "desc": "實習專區公告 114-120 年度醫院評鑑評定合格之實習教學醫院名單下載。", "url": "https://pt.isu.edu.tw/page/實習專區-iBhObl6XRpoE", "tag": "合格名單"}]}, "intern": {"id": "intern", "code": "M02", "line": "M", "n": "臨床全時實習", "en": "Clinical Internship (36 wks)", "x": 12.6, "y": 9.0, "lab": "s", "sub": "大四整學年 36 週全時臨床實習，輪調各大次專科", "tasks": [["t_intern_1", "完成臨床實習週誌紀錄與病例報告討論 (Case Presentation)"]], "exits": [{"num": "出口 1", "title": "實習專區完整檔案下載", "desc": "包含實習手冊、實習行政作業流程、實習時程表及申請制醫院簡章。", "url": "https://pt.isu.edu.tw/page/實習專區-iBhObl6XRpoE", "tag": "實習手冊"}, {"num": "出口 2", "title": "實習作業要點法規 (PDF)", "desc": "義守大學物理治療學系學生校外臨床實習作業要點與實習委員會設置辦法。", "url": "https://pt.isu.edu.tw/storage/files/sBYPLQbElRVlxO4zE2pQTYBcGfwLeBmaFgTcYTFN.pdf", "tag": "實習要點"}, {"num": "出口 3", "title": "校內法規規章查詢系統", "desc": "查詢義守大學學生校外實習合約保障、學生保險與爭議申訴法規條例。", "url": "https://law.isu.edu.tw/law/", "tag": "實習法規"}]}, "global": {"id": "global", "code": "M03", "line": "M", "n": "國際海外見習", "en": "Global Clinical Exchange", "x": 14.8, "y": 9.0, "lab": "s", "sub": "日本、美國、英國姊妹校海外醫療見實習與國際學術交流", "tasks": [["t_global_1", "探索海外物理治療見習補助計畫與語言能力要求"]], "exits": [{"num": "出口 1", "title": "優秀表現（APTSA 國際幹部）", "desc": "賀本系同學當選亞洲物理治療學生會 (APTSA) 副會長與國際交流成果。", "url": "https://pt.isu.edu.tw/page/優秀表現-f9lOKjp2PSOv", "tag": "APTSA副會長"}, {"num": "出口 2", "title": "境外生招生與國際交流處", "desc": "義守大學國際化辦學特色、境外姊妹校交換計畫與國際處交流專區。", "url": "https://oica.ishouuniversity.com/", "tag": "國際交流"}, {"num": "出口 3", "title": "學長姐的話（海外見習心得）", "desc": "學長姐親自分享海外醫院見習、國際視野拓展與求學生涯心得感悟。", "url": "https://pt.isu.edu.tw/page/學長姐的話-ol5uAD6QUNF1", "tag": "學長姐的話"}]}, "license": {"id": "license", "code": "M04", "line": "M", "n": "國考證照輔導", "en": "National Board Examination", "x": 16.5, "y": 7.3, "lab": "e", "sub": "專技高考物理治療師國考輔導、歷屆試題解析與衝刺班", "tasks": [["t_license_1", "完成一次物理治療師國考歷屆全真模擬試題演練"]], "exits": [{"num": "出口 1", "title": "考選部專技高考國考專區", "desc": "專技高考物理治療師考試應考資格、報名期程、考試科目與歷屆試題下載。", "url": "https://www.moex.gov.tw/", "tag": "考選部"}, {"num": "出口 2", "title": "公告國考複習班時間 (新聞)", "desc": "學系官方公告最新物理治療師國家考試衝刺複習班時程與教室規劃。", "url": "https://pt.isu.edu.tw/news/公告國考複習班時間-RPQYOt53wj8H", "tag": "國考複習班"}, {"num": "出口 3", "title": "優秀表現（歷屆國考榜單）", "desc": "公告 111-114 年第 1、2 次專門職業及技術人員高等考試物理治療師榜單 (PDF)。", "url": "https://pt.isu.edu.tw/page/優秀表現-f9lOKjp2PSOv", "tag": "國考榜單"}, {"num": "出口 4", "title": "專業證照畢業門檻標準", "desc": "物理治療學系學生專業證照畢業資格檢定暨作業規定與合格標準說明。", "url": "https://pt.isu.edu.tw/page/畢業門檻-FPEw9eue1VCF", "tag": "畢業門檻"}]}, "career": {"id": "career", "code": "M05", "line": "M", "n": "職涯多元就業", "en": "Career Pathways", "x": 16.5, "y": 4.8, "lab": "e", "sub": "醫院物理治療師、自費自營物理治療所、長照機構與球團防護", "tasks": [["t_career_1", "瀏覽自費治療所執業登記規範或長照輔導證照要求"]], "exits": [{"num": "出口 1", "title": "物理治療系友專區", "desc": "系友會最新動態、傑出系友就業資訊、生涯分享與校友回娘家聯絡窗口。", "url": "https://pt.isu.edu.tw/page/系友專區-E6WhU0uiSxEK", "tag": "系友專區"}, {"num": "出口 2", "title": "學長姐的話（職涯與升學）", "desc": "畢業學長姐分享臨床執業、自費治療所、海外求職與考取研究所經驗談。", "url": "https://pt.isu.edu.tw/page/學長姐的話-ol5uAD6QUNF1", "tag": "學長姐的話"}, {"num": "出口 3", "title": "集團資源與就業保證", "desc": "義联集團橫跨醫療、鋼鐵、休閒多元事業群，提供物治系友廣大就業平台。", "url": "https://www.e-united.com.tw/relation/index?tag=Medical", "tag": "集團就業"}, {"num": "出口 4", "title": "特色課程（產學實務演說）", "desc": "扎根學堂安排業界實務演說、優秀系友生涯發展分享與產業參訪。", "url": "https://pt.isu.edu.tw/page/特色課程-VwnEdLoCmYuG", "tag": "生涯演說"}]}, "learn": {"id": "learn", "code": "L01", "line": "L", "n": "跨域自主", "en": "Interdisciplinary Studies", "x": 1.8, "y": 7.0, "lab": "s", "sub": "智慧醫療、跨域微學程、外語培力與全人博雅", "isTransfer": false, "tasks": [["t_learn_1", "詳讀「課程擋修及實習作業要點」規定"], ["t_learn_2", "查大一新生選課時程並啟用學校信箱"]], "exits": [{"num": "出口 1", "title": "跨域學習微學程專區", "desc": "智慧醫療、運動醫學、AI 人工智慧與高齡照護等跨領域微學程修習辦法。", "url": "https://aa.isu.edu.tw/page/preview-8gHMKTYa8Wx7", "tag": "微學程"}, {"num": "出口 2", "title": "通識博雅選修課程", "desc": "涵蓋哲學思辨、生命關懷、醫學倫理與社會科學之人文博雅教育選課指南。", "url": "https://cge.isu.edu.tw/page/priview-5dlTgY6W16ac", "tag": "博雅課程"}, {"num": "出口 3", "title": "外語文中心英文能力檢定", "desc": "全校英語修課規定、英語能力畢業門檻對照表與雙語教學資源專區。", "url": "https://cge.isu.edu.tw/page/課程資訊-Pcl86sM4g3aW", "tag": "外語能力"}, {"num": "出口 4", "title": "選課時程與課務表單", "desc": "全校初選、加退選時程表，以及微學程成績審核與校際選課表單下載。", "url": "https://aa.isu.edu.tw/page/選課時程-i1W0YQmZ0eIz", "tag": "選課時程"}]}, "sa": {"id": "sa", "code": "L02", "line": "L", "n": "物治系學會", "en": "PT Student Association", "x": 3.6, "y": 7.0, "lab": "s", "sub": "物治系學會幹部、迎新宿營、白袍之夜與各項學生活動", "tasks": [["t_sa_1", "追蹤系學會 Instagram 官方帳號獲取最新活動消息"]], "exits": [{"num": "出口 1", "title": "物治系學會官方 Facebook", "desc": "義守大學物治系學會官方粉專，掌握系上大小事、家族活動與系服周邊。", "url": "https://www.facebook.com/ISUPT.since2002/?locale=zh_TW", "tag": "系學會FB"}, {"num": "出口 2", "title": "物治系學會官方 Instagram", "desc": "追蹤官方 IG（@isu_pt_sa）即時動態、迎新晚會與活動花絮精彩照片。", "url": "https://www.instagram.com/isu_pt_sa/", "tag": "系學會IG"}, {"num": "出口 3", "title": "學系傳統系歌專區", "desc": "義守大學物理治療學系專屬系歌歌詞、樂譜與學長姐傳承精神。", "url": "https://pt.isu.edu.tw/page/系歌-fypfe7MV4Xo3", "tag": "系歌專區"}]}, "sports": {"id": "sports", "code": "L03", "line": "L", "n": "運動防護社", "en": "Athletic Training Team", "x": 5.4, "y": 7.0, "lab": "s", "sub": "義守大學運動防護社、運動傷害貼紮、隨隊場邊即時防護", "tasks": [["t_sports_1", "練習白貼 (Athletic Tape) 與肌內效貼布 (Kinesio) 貼紮手法"]], "exits": [{"num": "出口 1", "title": "運動防護社官方 Instagram", "desc": "義守大學物治運動防護社（@isupt_sport.p）場邊防護支援、貼紮教學與社課動態。", "url": "https://www.instagram.com/isupt_sport.p/", "tag": "防護社IG"}, {"num": "出口 2", "title": "學務處社團活動專區", "desc": "全校學生社團活動組織、場地借用、社團評鑑與課外活動指導專區。", "url": "https://sa1.isu.edu.tw/page/社團專區-fL5FvxJATpOs", "tag": "社團專區"}, {"num": "出口 3", "title": "學系特色場域（運動防護教室）", "desc": "物理治療系特色場域介紹，包含運動機能貼紮與運動傷害復健實作空間。", "url": "https://pt.isu.edu.tw/page/特色場域-bkiJJ8bTot0Q", "tag": "特色場域"}]}, "postcup": {"id": "postcup", "code": "L04", "line": "L", "n": "大物盃與南醫盃", "en": "National PT Cup & Medical Cup", "x": 7.2, "y": 7.0, "lab": "s", "sub": "全國大專校院物理治療盃、南區醫學大專盃體育交流盛事", "isTransfer": true, "tasks": [["t_postcup_1", "了解全國大物盃與南醫盃各項球類報名期程與賽制"]], "exits": [{"num": "出口 1", "title": "師生競賽與優秀表現榮譽榜", "desc": "公布系上各項體育競賽、大專盃賽事與師生獲獎榮譽榜單與最新紀錄。", "url": "https://pt.isu.edu.tw/page/優秀表現-f9lOKjp2PSOv", "tag": "優秀表現"}, {"num": "出口 2", "title": "物治系學會賽事紀錄", "desc": "系學會 Facebook 歷屆大物盃、南醫盃出賽名單、即時戰報與慶功圖輯。", "url": "https://www.facebook.com/ISUPT.since2002/?locale=zh_TW", "tag": "賽事戰報"}, {"num": "出口 3", "title": "學長姐的話（熱血系隊回憶）", "desc": "學長姐回顧男籃、女籃、排球等熱血系隊訓練時光與跨校情誼凝聚。", "url": "https://pt.isu.edu.tw/page/學長姐的話-ol5uAD6QUNF1", "tag": "學長姐的話"}], "lines": ["大物盃", "與南醫盃"]}, "campuslife": {"id": "campuslife", "code": "L05", "line": "L", "n": "校園生活機能", "en": "Campus Life & Amenities", "x": 8.7, "y": 9.0, "lab": "n", "sub": "宿舍生活、義大世界購物廣場、校園美食街與學生心理諮商", "isTransfer": true, "tasks": [["t_campuslife_1", "熟記校本部與醫學院區接駁車時刻表與搭乘地點"]], "exits": [{"num": "出口 1", "title": "學務處獎助學金專區", "desc": "全校各項學生獎補助、生活助學金、弱勢助學與校內外獎學金申請手續。", "url": "https://sa1.isu.edu.tw/page/各項學生獎補助-MwWDFfUTmCjA", "tag": "獎助學金"}, {"num": "出口 2", "title": "學生宿舍生活環境簡介", "desc": "醫學院區科技化宿舍、套房設施、洗衣烘衣生活公約與宿舍收費標準。", "url": "https://sa1.isu.edu.tw/page/宿舍簡介-ZwB3uu7fm6dj", "tag": "宿舍簡介"}, {"num": "出口 3", "title": "義大世界生活圈購物中心", "desc": "鄰近義大世界購物廣場 Outlet、摩天輪與星級飯店，生活機能一應俱全。", "url": "https://www.edamall.com.tw/", "tag": "義大世界"}, {"num": "出口 4", "title": "校區接駁交通車時刻表", "desc": "校本部與醫學院區穿梭巴士時刻、直達左營高鐵站與高雄捷運交通車指南。", "url": "https://www.isu.edu.tw/traffic", "tag": "交通時刻"}, {"num": "出口 5", "title": "學生心理諮商與健康輔導", "desc": "學務處諮商輔導中心，提供學生專業心理師諮商、壓力調適與安心支持。", "url": "https://www.isu.edu.tw/counseling", "tag": "諮商輔導"}]}};
+    const LINES = {"A": {"id": "A", "name": "入學指引線", "short": "入學", "en": "PT Admissions Line", "color": "#f38448", "role": "highschool", "stops": ["about", "guide", "portfolio", "admit"], "waypoints": [[0.8, 1.5], [1.8, 1.5], [4.2, 1.5], [6.6, 1.5], [9.0, 1.5], [10.2, 2.7]]}, "F": {"id": "F", "name": "專業基礎線", "short": "基礎", "en": "Biomedical Foundation", "color": "#16a34a", "role": "freshman", "stops": ["anatomy", "biomech", "modalities"], "waypoints": [[0.8, 4.2], [2.2, 4.2], [5.0, 4.2], [7.8, 4.2], [10.2, 4.2]]}, "C": {"id": "C", "name": "進階專科線", "short": "專科", "en": "Clinical Specialties Loop", "color": "#9d7be0", "role": "clinical", "loop": true, "stops": ["ortho", "neuro", "cardio", "peds", "rehab", "whitecoat"], "waypoints": [[10.2, 2.7], [14.8, 2.7], [14.8, 6.9], [10.2, 6.9]]}, "M": {"id": "M", "name": "實習國考線", "short": "實習", "en": "Medical & License Line", "color": "#0cbcf5", "role": "clinical", "stops": ["edagroup", "intern", "global", "license", "career"], "waypoints": [[10.2, 6.9], [10.2, 9.0], [12.6, 9.0], [14.8, 9.0], [16.5, 7.3], [16.5, 4.8], [16.5, 3.8]]}, "L": {"id": "L", "name": "課外學習活動線", "short": "課外", "en": "Extracurricular & Learning Activities Line", "color": "#f59e0b", "role": "life", "stops": ["learn", "sa", "sports", "postcup", "campuslife"], "waypoints": [[0.8, 7.0], [1.8, 7.0], [3.6, 7.0], [5.4, 7.0], [7.2, 7.0], [7.2, 9.0], [8.7, 9.0], [10.2, 9.0]]}};
+    const TRANSFERS = [[[9.0, 1.5], [10.2, 2.7]], [[10.2, 6.9], [10.2, 9.0]]];
+  </script>
+
+  <!-- Main Application Logic -->
+  <script>
+    (function () {
+      "use strict";
+
+      // Unit grid scale
+      const U = 76;
+      const OX = 30;
+      const OY = 30;
+
+      // Coordinate converter
+      const toSvgX = (x) => x * U + OX;
+      const toSvgY = (y) => y * U + OY;
+
+      // State Management
+      const STORAGE_KEY_TASKS = "isupt:tasks";
+      const STORAGE_KEY_SAVED = "isupt:saved";
+      const STORAGE_KEY_ROLE = "isupt:role";
+      const STORAGE_KEY_THEME = "isupt:theme";
+
+      let completedTasks = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_TASKS) || "[]"));
+      let savedStations = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_SAVED) || "[]"));
+      let currentRole = localStorage.getItem(STORAGE_KEY_ROLE) || "all";
+      let activeStationId = null;
+      let activeLineId = "C";
+      let isCruiseMode = false;
+      let cruiseTimer = null;
+      let soundEnabled = true;
+
+      // Pan & Zoom Viewport State (Single-stage SVG Camera)
+      let view = { x: 0, y: 0, scale: 1 };
+      let cameraMode = "overview"; // "overview" | "focus" | "manual"
+      let cameraAnimId = null;
+      let isDragging = false;
+      let dragStart = { x: 0, y: 0 };
+      let lastTouchDist = 0;
+      let lastTouchMid = null;
+
+      // Audio Context for Arrival Chimes
+      let audioCtx = null;
+      function playArrivalChime() {
+        if (!soundEnabled) return;
+        try {
+          if (!audioCtx) {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContext();
+          }
+          if (audioCtx.state === "suspended") {
+            audioCtx.resume();
+          }
+          const now = audioCtx.currentTime;
+          // Dual-tone chime: 659.25Hz (E5) -> 880Hz (A5)
+          const osc1 = audioCtx.createOscillator();
+          const gain1 = audioCtx.createGain();
+          osc1.type = "sine";
+          osc1.frequency.setValueAtTime(659.25, now);
+          gain1.gain.setValueAtTime(0.15, now);
+          gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+          osc1.connect(gain1);
+          gain1.connect(audioCtx.destination);
+          osc1.start(now);
+          osc1.stop(now + 0.5);
+
+          const osc2 = audioCtx.createOscillator();
+          const gain2 = audioCtx.createGain();
+          osc2.type = "sine";
+          osc2.frequency.setValueAtTime(880.0, now + 0.18);
+          gain2.gain.setValueAtTime(0.18, now + 0.18);
+          gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+          osc2.connect(gain2);
+          gain2.connect(audioCtx.destination);
+          osc2.start(now + 0.18);
+          osc2.stop(now + 0.8);
+        } catch (e) {
+          console.warn("Audio chime failed:", e);
+        }
+      }
+
+      // DOM Elements
+      const mapWrap = document.getElementById("mapWrap");
+      const svgMap = document.getElementById("map");
+      const cameraLayer = document.getElementById("cameraLayer");
+      const mapContentGroup = document.getElementById("mapContentGroup");
+      const tracksLayer = document.getElementById("tracksLayer");
+      const tracksHaloLayer = document.getElementById("tracksHaloLayer");
+      const transfersLayer = document.getElementById("transfersLayer");
+      const stationsLayer = document.getElementById("stationsLayer");
+      const pulseRing = document.getElementById("pulseRing");
+      const trainEl = document.getElementById("train");
+      const drawer = document.getElementById("drawer");
+      const zoomResetBtn = document.getElementById("zoomReset");
+      const ledLineBadge = document.getElementById("ledLineBadge");
+      const ledTrainStatus = document.getElementById("ledTrainStatus");
+      const ledTicker = document.getElementById("ledTicker");
+      const globalTaskBadge = document.getElementById("globalTaskBadge");
+      const routeStrip = document.getElementById("routeStrip");
+      const stripNodes = document.getElementById("stripNodes");
+      const stripLineDot = document.getElementById("stripLineDot");
+      const stripLineName = document.getElementById("stripLineName");
+
+      // Smooth fillet path generator for natural 45° and 90° transit turns
+      function buildFilletPath(points, r = 26, isLoop = false) {
+        if (!points || points.length < 2) return "";
+        let pts = points.map(p => [Number(p[0]), Number(p[1])]);
+
+        if (!isLoop) {
+          if (pts.length === 2) {
+            return `M ${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)} L ${pts[1][0].toFixed(1)},${pts[1][1].toFixed(1)}`;
+          }
+          let d = [`M ${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`];
+          for (let i = 1; i < pts.length - 1; i++) {
+            const pPrev = pts[i - 1];
+            const pCurr = pts[i];
+            const pNext = pts[i + 1];
+
+            const v1 = [pCurr[0] - pPrev[0], pCurr[1] - pPrev[1]];
+            const v2 = [pNext[0] - pCurr[0], pNext[1] - pCurr[1]];
+            const len1 = Math.hypot(v1[0], v1[1]);
+            const len2 = Math.hypot(v2[0], v2[1]);
+            if (len1 < 1e-4 || len2 < 1e-4) {
+              d.push(`L ${pCurr[0].toFixed(1)},${pCurr[0].toFixed(1)}`);
+              continue;
+            }
+            const u1 = [v1[0] / len1, v1[1] / len1];
+            const u2 = [v2[0] / len2, v2[1] / len2];
+
+            const curR = Math.min(r, len1 * 0.45, len2 * 0.45);
+            const pStart = [pCurr[0] - u1[0] * curR, pCurr[1] - u1[1] * curR];
+            const pEnd = [pCurr[0] + u2[0] * curR, pCurr[1] + u2[1] * curR];
+
+            d.push(`L ${pStart[0].toFixed(1)},${pStart[1].toFixed(1)} Q ${pCurr[0].toFixed(1)},${pCurr[1].toFixed(1)} ${pEnd[0].toFixed(1)},${pEnd[1].toFixed(1)}`);
+          }
+          d.push(`L ${pts[pts.length - 1][0].toFixed(1)},${pts[pts.length - 1][1].toFixed(1)}`);
+          return d.join(" ");
+        } else {
+          // Closed loop
+          if (pts.length > 1 && Math.hypot(pts[0][0] - pts[pts.length - 1][0], pts[0][1] - pts[pts.length - 1][1]) < 1e-4) {
+            pts = pts.slice(0, -1);
+          }
+          const n = pts.length;
+          if (n < 3) return "";
+
+          const corners = [];
+          for (let i = 0; i < n; i++) {
+            const pPrev = pts[(i - 1 + n) % n];
+            const pCurr = pts[i];
+            const pNext = pts[(i + 1) % n];
+
+            const v1 = [pCurr[0] - pPrev[0], pCurr[1] - pPrev[1]];
+            const v2 = [pNext[0] - pCurr[0], pNext[1] - pCurr[1]];
+            const len1 = Math.hypot(v1[0], v1[1]);
+            const len2 = Math.hypot(v2[0], v2[1]);
+            const u1 = [v1[0] / len1, v1[1] / len1];
+            const u2 = [v2[0] / len2, v2[1] / len2];
+
+            const curR = Math.min(r, len1 * 0.45, len2 * 0.45);
+            const pStart = [pCurr[0] - u1[0] * curR, pCurr[1] - u1[1] * curR];
+            const pEnd = [pCurr[0] + u2[0] * curR, pCurr[1] + u2[1] * curR];
+            corners.push({ start: pStart, curr: pCurr, end: pEnd });
+          }
+
+          let d = [`M ${corners[0].end[0].toFixed(1)},${corners[0].end[1].toFixed(1)}`];
+          for (let i = 1; i < n; i++) {
+            d.push(`L ${corners[i].start[0].toFixed(1)},${corners[i].start[1].toFixed(1)} Q ${corners[i].curr[0].toFixed(1)},${corners[i].curr[1].toFixed(1)} ${corners[i].end[0].toFixed(1)},${corners[i].end[1].toFixed(1)}`);
+          }
+          d.push(`L ${corners[0].start[0].toFixed(1)},${corners[0].start[1].toFixed(1)} Q ${corners[0].curr[0].toFixed(1)},${corners[0].curr[1].toFixed(1)} ${corners[0].end[0].toFixed(1)},${corners[0].end[1].toFixed(1)} Z`);
+          return d.join(" ");
+        }
+      }
+
+      // Render Central Watermark & Legend (Full-bleed blueprint grid is rendered on mapWrap)
+      function renderDecorations() {
+        const gridG = document.getElementById("gridLayer");
+        if (gridG) {
+          gridG.innerHTML = "";
+        }
+
+        // Central Watermark & Legend
+        const decoG = document.getElementById("decoLayer");
+        if (decoG) {
+          decoG.innerHTML = "";
+          const cx = 980;
+          const cy = 395;
+
+          // Watermark Chinese Title
+          const wmk1 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          wmk1.setAttribute("x", cx);
+          wmk1.setAttribute("y", cy - 28);
+          wmk1.setAttribute("text-anchor", "middle");
+          wmk1.setAttribute("class", "watermark-main");
+          wmk1.textContent = "義守物治線";
+          decoG.appendChild(wmk1);
+
+          // Watermark Subtitle
+          const wmk2 = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          wmk2.setAttribute("x", cx);
+          wmk2.setAttribute("y", cy + 8);
+          wmk2.setAttribute("text-anchor", "middle");
+          wmk2.setAttribute("class", "watermark-sub");
+          wmk2.textContent = "I-SHOU UNIVERSITY ・ PHYSICAL THERAPY ROUTE MAP";
+          decoG.appendChild(wmk2);
+
+          // Central Floating Legend (Two Rows Centered inside Loop)
+          const lgGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          lgGroup.setAttribute("class", "central-legend-group");
+
+          const legendRows = [
+            { keys: ["A", "F", "C"], y: cy + 36, spacing: 92 },
+            { keys: ["M", "L"],      y: cy + 62, spacing: 92 }
+          ];
+
+          legendRows.forEach((row) => {
+            const rowKeys = row.keys;
+            const startX = cx - ((rowKeys.length - 1) * row.spacing) / 2;
+            const legY = row.y;
+
+            rowKeys.forEach((k, idx) => {
+              const lData = LINES[k];
+              if (!lData) return;
+              const itemX = startX + idx * row.spacing;
+
+              const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+              dot.setAttribute("cx", itemX - 24);
+              dot.setAttribute("cy", legY);
+              dot.setAttribute("r", "7.5");
+              dot.setAttribute("fill", lData.color);
+              dot.setAttribute("stroke", "#ffffff");
+              dot.setAttribute("stroke-width", "1.5");
+              dot.setAttribute("filter", "drop-shadow(0 2px 4px rgba(0,0,0,0.22))");
+              lgGroup.appendChild(dot);
+
+              const txt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+              txt.setAttribute("x", itemX - 12);
+              txt.setAttribute("y", legY + 5.2);
+              txt.setAttribute("class", "central-legend-text");
+              txt.textContent = lData.short || lData.name.slice(0, 4);
+              lgGroup.appendChild(txt);
+            });
+          });
+
+          decoG.appendChild(lgGroup);
+        }
+      }
+
+      // Render Tracks with Fillet Curves & Terminus Badges
+      function renderTracks() {
+        tracksLayer.innerHTML = "";
+        tracksHaloLayer.innerHTML = "";
+        transfersLayer.innerHTML = "";
+
+        // Transfer Connectors (45-degree smooth filleted lines)
+        TRANSFERS.forEach((t) => {
+          const p1 = t[0];
+          const p2 = t[1];
+          const pts = [
+            [toSvgX(p1[0]), toSvgY(p1[1])],
+            [toSvgX(p2[0]), toSvgY(p2[1])]
+          ];
+          const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          path.setAttribute("d", buildFilletPath(pts, 20, false));
+          path.setAttribute("class", "track-connector");
+          transfersLayer.appendChild(path);
+        });
+
+        // Main Transit Lines
+        Object.values(LINES).forEach((lineData) => {
+          const pts = lineData.waypoints;
+          if (pts.length < 2) return;
+
+          const svgPts = pts.map(p => [toSvgX(p[0]), toSvgY(p[1])]);
+          const d = buildFilletPath(svgPts, 28, !!lineData.loop);
+
+          // Subtle Track Glow Halo
+          const halo = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          halo.setAttribute("d", d);
+          halo.setAttribute("class", "track-bg");
+          halo.setAttribute("stroke", lineData.color);
+          halo.setAttribute("stroke-width", "18");
+          halo.setAttribute("stroke-linecap", "round");
+          halo.setAttribute("stroke-linejoin", "round");
+          tracksHaloLayer.appendChild(halo);
+
+          // Main Track Line
+          const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          path.setAttribute("d", d);
+          path.setAttribute("class", "track-line");
+          path.setAttribute("id", `track-${lineData.id}`);
+          path.setAttribute("stroke", lineData.color);
+          path.setAttribute("stroke-width", "9.5");
+          path.setAttribute("stroke-linecap", "round");
+          path.setAttribute("stroke-linejoin", "round");
+          path.onclick = () => {
+            selectLine(lineData.id);
+          };
+          tracksLayer.appendChild(path);
+        });
+
+        // Terminus Badges for Line Endpoints
+        const termini = [
+          { k: "A", x: toSvgX(0.8), y: toSvgY(1.5), color: LINES.A.color },
+          { k: "F", x: toSvgX(0.8), y: toSvgY(4.2), color: LINES.F.color },
+          { k: "L", x: toSvgX(0.8), y: toSvgY(7.0), color: LINES.L.color },
+          { k: "M", x: toSvgX(16.5), y: toSvgY(3.8), color: LINES.M.color }
+        ];
+
+        termini.forEach(term => {
+          const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          g.setAttribute("class", "terminus-badge");
+          g.setAttribute("transform", `translate(${term.x}, ${term.y})`);
+
+          const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+          rect.setAttribute("x", "-13");
+          rect.setAttribute("y", "-11");
+          rect.setAttribute("width", "26");
+          rect.setAttribute("height", "22");
+          rect.setAttribute("rx", "5");
+          rect.setAttribute("fill", term.color);
+
+          const txt = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          txt.setAttribute("x", "0");
+          txt.setAttribute("y", "4.5");
+          txt.setAttribute("text-anchor", "middle");
+          txt.setAttribute("class", "terminus-text");
+          txt.textContent = term.k;
+
+          g.appendChild(rect);
+          g.appendChild(txt);
+          tracksLayer.appendChild(g);
+        });
+      }
+
+      // Render Stations (High-Contrast Transfer Hubs, Rings, Dual-Line Labels)
+      function renderStations() {
+        stationsLayer.innerHTML = "";
+
+        const L_OFFSET = {
+          n:  { x: 0,   y1: -34, y2: -18, anchor: "middle" },
+          s:  { x: 0,   y1: 24,  y2: 41,  anchor: "middle" },
+          e:  { x: 22,  y1: -2,  y2: 13,  anchor: "start"  },
+          w:  { x: -22, y1: -2,  y2: 13,  anchor: "end"    },
+          ne: { x: 18,  y1: -20, y2: -7,  anchor: "start"  },
+          nw: { x: -18, y1: -20, y2: -7,  anchor: "end"    },
+          se: { x: 18,  y1: 24,  y2: 41,  anchor: "start"  },
+          sw: { x: -18, y1: 24,  y2: 41,  anchor: "end"    }
+        };
+
+        Object.values(STATIONS).forEach((st) => {
+          const cx = toSvgX(st.x);
+          const cy = toSvgY(st.y);
+          const lineObj = LINES[st.line] || { color: "#14283a" };
+          const isTransfer = st.isTransfer || ["admit", "learn", "ortho", "whitecoat", "edagroup", "campuslife", "postcup"].includes(st.id);
+
+          const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          g.setAttribute("class", `station-node ${isTransfer ? "is-transfer" : ""}`);
+          g.setAttribute("id", `stNode-${st.id}`);
+          g.setAttribute("data-id", st.id);
+          g.setAttribute("transform", `translate(${cx}, ${cy})`);
+
+          // Hover / Click Hit Area (generous 24px radius)
+          const hit = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          hit.setAttribute("r", "24");
+          hit.setAttribute("class", "station-hit-area");
+          g.appendChild(hit);
+
+          if (isTransfer) {
+            // Interchange Station: High-contrast double concentric rings
+            const outerRing = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            outerRing.setAttribute("r", "14.5");
+            outerRing.setAttribute("class", "transfer-outer-ring");
+            g.appendChild(outerRing);
+
+            const midRing = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            midRing.setAttribute("r", "8.5");
+            midRing.setAttribute("class", "transfer-mid-ring");
+            g.appendChild(midRing);
+
+            const coreDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            coreDot.setAttribute("r", "4");
+            coreDot.setAttribute("class", "transfer-core-dot");
+            coreDot.setAttribute("fill", lineObj.color);
+            g.appendChild(coreDot);
+          } else {
+            // Standard Station: Elegant colored ring with solid dot
+            const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            ring.setAttribute("r", "8.5");
+            ring.setAttribute("class", "station-ring");
+            ring.setAttribute("stroke", lineObj.color);
+            g.appendChild(ring);
+
+            const inner = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            inner.setAttribute("r", "4.0");
+            inner.setAttribute("class", "station-inner");
+            inner.setAttribute("fill", lineObj.color);
+            g.appendChild(inner);
+          }
+
+          // Station Chinese Name Label (Interactive & Multi-line Support)
+          const off = L_OFFSET[st.lab || "s"] || L_OFFSET.s;
+          const labelCn = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          labelCn.setAttribute("class", "station-label-cn");
+          labelCn.setAttribute("x", off.x);
+          labelCn.setAttribute("y", off.y1);
+          labelCn.setAttribute("text-anchor", off.anchor);
+
+          const lines = st.lines || [st.n];
+          if (lines.length === 1) {
+            labelCn.textContent = lines[0];
+          } else {
+            lines.forEach((lineText, idx) => {
+              const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+              tspan.setAttribute("x", off.x);
+              if (idx === 0) {
+                tspan.setAttribute("y", off.y1);
+              } else {
+                tspan.setAttribute("dy", "1.22em");
+              }
+              tspan.textContent = lineText;
+              labelCn.appendChild(tspan);
+            });
+          }
+          g.appendChild(labelCn);
+
+          // Station English Subtitle Label
+          const labelEn = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          labelEn.setAttribute("class", "station-label-en");
+          labelEn.setAttribute("x", off.x);
+          const extraY = (lines.length - 1) * 20;
+          labelEn.setAttribute("y", off.y2 + extraY);
+          labelEn.setAttribute("text-anchor", off.anchor);
+          labelEn.textContent = st.en;
+          g.appendChild(labelEn);
+
+          // Interaction Handlers
+          g.onclick = (e) => {
+            e.stopPropagation();
+            openStation(st.id);
+          };
+
+          stationsLayer.appendChild(g);
+        });
+      }
+
+      const LABEL_FOCUS_OFFSET = {
+        n:  { dx: 0,   dy: -24 },
+        s:  { dx: 0,   dy: 24  },
+        e:  { dx: 48,  dy: 0   },
+        w:  { dx: -48, dy: 0   },
+        ne: { dx: 36,  dy: -16 },
+        nw: { dx: -36, dy: -16 },
+        se: { dx: 36,  dy: 20  },
+        sw: { dx: -36, dy: 20  }
+      };
+
+      function cancelCameraAnimation() {
+        if (cameraAnimId !== null) {
+          cancelAnimationFrame(cameraAnimId);
+          cameraAnimId = null;
+        }
+      }
+
+      function animateCameraTo(target, duration = 460) {
+        cancelCameraAnimation();
+        if (!duration || duration <= 0) {
+          view.x = target.x;
+          view.y = target.y;
+          view.scale = target.scale;
+          applyViewTransform();
+          return;
+        }
+        const start = { x: view.x, y: view.y, scale: view.scale };
+        const startTime = performance.now();
+        function step(now) {
+          const t = Math.min(1, (now - startTime) / duration);
+          const ease = 1 - Math.pow(1 - t, 3);
+          view.x = start.x + (target.x - start.x) * ease;
+          view.y = start.y + (target.y - start.y) * ease;
+          view.scale = start.scale + (target.scale - start.scale) * ease;
+          applyViewTransform();
+          if (t < 1) {
+            cameraAnimId = requestAnimationFrame(step);
+          } else {
+            cameraAnimId = null;
+          }
+        }
+        cameraAnimId = requestAnimationFrame(step);
+      }
+
+      function getAvailableMapSize(drawerWillBeOpen) {
+        const parentRect = mapWrap.parentElement
+          ? mapWrap.parentElement.getBoundingClientRect()
+          : mapWrap.getBoundingClientRect();
+        let availW = parentRect.width || mapWrap.clientWidth || 1000;
+        let availH = parentRect.height || mapWrap.clientHeight || 600;
+
+        if (drawerWillBeOpen) {
+          if (window.innerWidth > 900) {
+            const drawerW = drawer.offsetWidth || 420;
+            availW = Math.max(300, availW - drawerW);
+          } else {
+            const drawerH = Math.min(drawer.offsetHeight || availH * 0.5, availH * 0.6);
+            availH = Math.max(180, availH - drawerH);
+          }
+        }
+        return { availW: Math.max(280, availW), availH: Math.max(180, availH) };
+      }
+
+      function getMapBounds() {
+        if (mapContentGroup && typeof mapContentGroup.getBBox === "function") {
+          try {
+            const b = mapContentGroup.getBBox();
+            if (b && b.width > 100 && b.height > 100) {
+              return { x: b.x, y: b.y, width: b.width, height: b.height };
+            }
+          } catch (_) {}
+        }
+        return { x: 64, y: 74, width: 1410, height: 696 };
+      }
+
+      function computeFitView(drawerWillBeOpen) {
+        const { availW, availH } = getAvailableMapSize(drawerWillBeOpen);
+        const b = getMapBounds();
+        const padX = Math.min(26, availW * 0.025);
+        const padY = Math.min(12, availH * 0.02);
+        const scaleX = (availW - padX * 2) / b.width;
+        const scaleY = (availH - padY * 2) / b.height;
+        const scale = Math.max(0.25, Math.min(scaleX, scaleY, 2.2));
+        const x = (availW - b.width * scale) / 2 - b.x * scale;
+        const y = (availH - b.height * scale) / 2 - b.y * scale;
+        return { x, y, scale };
+      }
+
+      function computeFocusView(stationId, drawerWillBeOpen) {
+        const st = STATIONS[stationId];
+        if (!st) return computeFitView(drawerWillBeOpen);
+
+        const { availW, availH } = getAvailableMapSize(drawerWillBeOpen);
+        const b = getMapBounds();
+        const overviewFit = computeFitView(false);
+        const drawerFit = computeFitView(drawerWillBeOpen);
+
+        const minFocusScale = window.innerWidth <= 900 ? 0.75 : 0.92;
+        const focusScale = Math.max(
+          minFocusScale,
+          Math.min(1.62, Math.max(drawerFit.scale * 1.38, overviewFit.scale * 1.28))
+        );
+
+        const off = LABEL_FOCUS_OFFSET[st.lab || "s"] || LABEL_FOCUS_OFFSET.s;
+        const focusX = toSvgX(st.x) + off.dx;
+        const focusY = toSvgY(st.y) + off.dy;
+
+        let tx = availW / 2 - focusX * focusScale;
+        let ty = availH / 2 - focusY * focusScale;
+
+        const padClampX = 42;
+        const padClampY = 36;
+        const worldW = (b.width + padClampX * 2) * focusScale;
+        const worldH = (b.height + padClampY * 2) * focusScale;
+
+        if (worldW <= availW) {
+          tx = (availW - b.width * focusScale) / 2 - b.x * focusScale;
+        } else {
+          const minTx = availW - (b.x + b.width + padClampX) * focusScale;
+          const maxTx = -(b.x - padClampX) * focusScale;
+          tx = Math.max(minTx, Math.min(maxTx, tx));
+        }
+
+        if (worldH <= availH) {
+          ty = (availH - b.height * focusScale) / 2 - b.y * focusScale;
+        } else {
+          const minTy = availH - (b.y + b.height + padClampY) * focusScale;
+          const maxTy = -(b.y - padClampY) * focusScale;
+          ty = Math.max(minTy, Math.min(maxTy, ty));
+        }
+
+        return { x: tx, y: ty, scale: focusScale };
+      }
+
+      // Fit ENTIRE Map edge-to-edge vertically without any drawer overlap
+      function fitFullMap(drawerWillBeOpen = drawer.classList.contains("open"), animate = false) {
+        cameraMode = "overview";
+        if (zoomResetBtn) zoomResetBtn.classList.add("active-mode");
+        const target = computeFitView(drawerWillBeOpen);
+        animateCameraTo(target, animate ? 420 : 0);
+      }
+
+      // Mildly zoom and pan camera to focus on the selected station & neighbors
+      function focusStation(stationId, animate = true) {
+        cameraMode = "focus";
+        if (zoomResetBtn) zoomResetBtn.classList.remove("active-mode");
+        const target = computeFocusView(stationId, drawer.classList.contains("open"));
+        animateCameraTo(target, animate ? 460 : 0);
+      }
+
+      // Open Station Drawer & Mildly Focus Camera on Selected Station
+      function openStation(stationId, triggerChime = true, shouldFocus = true) {
+        const st = STATIONS[stationId];
+        if (!st) return;
+
+        activeStationId = stationId;
+        activeLineId = st.line;
+        const lineObj = LINES[st.line] || { name: "義守物治線", color: "#0cbcf5" };
+
+        // Update URL hash without re-scrolling
+        if (location.hash !== "#" + stationId) {
+          history.replaceState(null, "", "#" + stationId);
+        }
+
+        // Open Drawer
+        drawer.classList.add("open");
+
+        // Smoothly pan & mildly zoom into the station inside visible map area
+        if (shouldFocus) {
+          focusStation(stationId, true);
+        }
+
+        // Move Train to Station
+        // 列車正交方向規則：
+        // - 朝左（環狀底軌 C04, C05）：rotate(0), scale(-1, 1)
+        // - 朝下（C02, C03, C06）：rotate(90), scale(1, 1)
+        // - 朝上（M04, M05）：rotate(-90), scale(1, 1)
+        // - 其餘全路網車站朝右：rotate(0), scale(1, 1)
+        const leftFacingStations = new Set(["peds", "rehab"]);
+        const downFacingStations = new Set(["neuro", "cardio", "whitecoat"]);
+        const upFacingStations = new Set(["license", "career"]);
+
+        let rotateDeg = 0;
+        let scaleX = 1;
+        if (leftFacingStations.has(stationId)) {
+          scaleX = -1;
+        } else if (downFacingStations.has(stationId)) {
+          rotateDeg = 90;
+        } else if (upFacingStations.has(stationId)) {
+          rotateDeg = -90;
+        }
+        moveTrainTo(toSvgX(st.x), toSvgY(st.y), lineObj.color, rotateDeg, scaleX);
+
+        // Animate Pulse Ring on Station
+        pulseRing.setAttribute("cx", toSvgX(st.x));
+        pulseRing.setAttribute("cy", toSvgY(st.y));
+        pulseRing.setAttribute("stroke", lineObj.color);
+        pulseRing.classList.remove("animating");
+        void pulseRing.offsetWidth; // force reflow
+        pulseRing.classList.add("animating");
+
+        // Target Reticle with spinning micro-ring
+        const reticle = document.getElementById("targetReticle");
+        if (reticle) {
+          reticle.setAttribute("transform", `translate(${toSvgX(st.x)}, ${toSvgY(st.y)})`);
+          reticle.style.display = "";
+        }
+
+        // Sound Chime
+        if (triggerChime) {
+          playArrivalChime();
+        }
+
+        // Update LED Display
+        ledLineBadge.textContent = lineObj.name;
+        ledLineBadge.style.borderColor = lineObj.color;
+        ledTrainStatus.textContent = `列車抵達：${st.code} ${st.n}站`;
+        ledTicker.textContent = `✦ 列車已抵達：[${lineObj.name}] ${st.code} ${st.n}站 ✦ 出口直達：${st.exits.map(e => e.title).join(" ｜ ")} ✦`;
+
+        // Update Active Node Highlights
+        document.querySelectorAll(".station-node").forEach(node => node.classList.remove("active"));
+        const activeNode = document.getElementById(`stNode-${stationId}`);
+        if (activeNode) activeNode.classList.add("active");
+
+        // Fill Drawer Data
+        document.getElementById("dCode").textContent = st.code;
+        document.getElementById("dCode").style.background = lineObj.color;
+        document.getElementById("dLineName").textContent = lineObj.name;
+        document.getElementById("dTitle").textContent = st.n;
+        document.getElementById("dEn").textContent = st.en;
+        document.getElementById("dSub").textContent = st.sub;
+
+        // Bookmark button state
+        const saveBtn = document.getElementById("saveBtn");
+        if (savedStations.has(stationId)) {
+          saveBtn.classList.add("active");
+          saveBtn.textContent = "★ 已收藏";
+        } else {
+          saveBtn.classList.remove("active");
+          saveBtn.textContent = "⭐ 收藏此站";
+        }
+
+        // Render Exits
+        const dExitsList = document.getElementById("dExitsList");
+        dExitsList.innerHTML = "";
+        st.exits.forEach((exit) => {
+          const card = document.createElement("div");
+          card.className = "exit-card";
+          card.innerHTML = `
+            <div class="exit-card-header">
+              <span class="exit-pill">${exit.num}</span>
+              <span class="exit-tag">${exit.tag}</span>
+            </div>
+            <div class="exit-title">${exit.title}</div>
+            <div class="exit-desc">${exit.desc}</div>
+            <a href="${exit.url}" target="_blank" rel="noopener noreferrer" class="exit-link-btn">
+              🔗 開啟系網連結 ➔
+            </a>
+          `;
+          dExitsList.appendChild(card);
+        });
+
+        // Render Tasks
+        renderDrawerTasks(st);
+
+        // Update Bottom Route Strip
+        updateRouteStrip();
+      }
+
+      // Render Tasks inside Drawer
+      function renderDrawerTasks(st) {
+        const dTasksList = document.getElementById("dTasksList");
+        const dTaskStats = document.getElementById("dTaskStats");
+        dTasksList.innerHTML = "";
+
+        if (!st.tasks || st.tasks.length === 0) {
+          dTasksList.innerHTML = '<div style="font-size:0.8rem; color:var(--ink-dim);">本站暫無專屬待辦。</div>';
+          dTaskStats.textContent = "";
+          return;
+        }
+
+        let completedCount = 0;
+        st.tasks.forEach(([taskId, taskDesc]) => {
+          const isDone = completedTasks.has(taskId);
+          if (isDone) completedCount++;
+
+          const item = document.createElement("label");
+          item.className = `task-item ${isDone ? "completed" : ""}`;
+          item.innerHTML = `
+            <input type="checkbox" class="task-checkbox" data-task-id="${taskId}" ${isDone ? "checked" : ""}>
+            <span class="task-text">${taskDesc}</span>
+          `;
+
+          item.querySelector("input").onchange = (e) => {
+            toggleTask(taskId, e.target.checked);
+            renderDrawerTasks(st);
+          };
+
+          dTasksList.appendChild(item);
+        });
+
+        dTaskStats.textContent = `${completedCount}/${st.tasks.length} 完成`;
+      }
+
+      // Toggle Task State
+      function toggleTask(taskId, isChecked) {
+        if (isChecked) {
+          completedTasks.add(taskId);
+        } else {
+          completedTasks.delete(taskId);
+        }
+        localStorage.setItem(STORAGE_KEY_TASKS, JSON.stringify([...completedTasks]));
+        updateGlobalTaskStats();
+      }
+
+      // Update Global Tasks Badges and Modal
+      function updateGlobalTaskStats() {
+        const allTasks = Object.values(STATIONS).flatMap(s => s.tasks || []);
+        const total = allTasks.length;
+        const done = completedTasks.size;
+        const pct = total > 0 ? Math.round((done / total) * 100) : 0;
+
+        globalTaskBadge.textContent = `${done}/${total}`;
+        const modalStats = document.getElementById("modalTaskStats");
+        const modalBar = document.getElementById("modalProgressBar");
+        if (modalStats) modalStats.textContent = `${done} / ${total} (${pct}%)`;
+        if (modalBar) modalBar.style.width = `${pct}%`;
+
+        // Update modal task items
+        const globalTasksList = document.getElementById("globalTasksList");
+        if (globalTasksList) {
+          globalTasksList.innerHTML = "";
+          Object.values(LINES).forEach(l => {
+            const lineWrap = document.createElement("div");
+            lineWrap.style.marginBottom = "16px";
+            lineWrap.innerHTML = `<h4 style="font-size:0.88rem; font-weight:800; color:${l.color}; margin-bottom:8px;">${l.name} (${l.stops.length} 站)</h4>`;
+            
+            l.stops.forEach(sid => {
+              const st = STATIONS[sid];
+              if (!st || !st.tasks) return;
+              st.tasks.forEach(([tid, desc]) => {
+                const isDone = completedTasks.has(tid);
+                const item = document.createElement("div");
+                item.className = `task-item ${isDone ? "completed" : ""}`;
+                item.innerHTML = `
+                  <input type="checkbox" class="task-checkbox" ${isDone ? "checked" : ""}>
+                  <div style="flex:1;">
+                    <div class="task-text">${desc}</div>
+                    <div style="font-size:0.72rem; color:var(--ink-dim); margin-top:2px;">所屬：${st.code} ${st.n}</div>
+                  </div>
+                `;
+                item.querySelector("input").onchange = (e) => {
+                  toggleTask(tid, e.target.checked);
+                  updateGlobalTaskStats();
+                  if (activeStationId === sid) renderDrawerTasks(st);
+                };
+                lineWrap.appendChild(item);
+              });
+            });
+            globalTasksList.appendChild(lineWrap);
+          });
+        }
+      }
+
+      // Move Train Marker with Strict Cardinal Orientation (Right / Left / Down / Up) & Dynamic Livery
+      let trainX = null;
+      let trainY = null;
+
+      function moveTrainTo(targetX, targetY, lineColor, rotateDeg = 0, scaleX = 1) {
+        trainX = targetX;
+        trainY = targetY;
+
+        // Strict cardinal transform: rotate(0 | 90 | -90) and horizontal mirror scale(1 | -1, 1)
+        trainEl.setAttribute("transform", `translate(${targetX}, ${targetY}) rotate(${rotateDeg}) scale(${scaleX}, 1)`);
+
+        // Dynamic livery stripe matching active line color
+        const stripe = document.getElementById("trainStripe");
+        if (stripe && lineColor) {
+          stripe.setAttribute("fill", lineColor);
+        }
+      }
+
+      function applyViewTransform() {
+        if (cameraLayer) {
+          cameraLayer.setAttribute("transform", `translate(${view.x.toFixed(2)}, ${view.y.toFixed(2)}) scale(${view.scale.toFixed(4)})`);
+        }
+        const gridStep = Math.max(12, Math.min(140, 38 * view.scale));
+        mapWrap.style.backgroundSize = `${gridStep.toFixed(2)}px ${gridStep.toFixed(2)}px`;
+        mapWrap.style.backgroundPosition = `${view.x.toFixed(2)}px ${view.y.toFixed(2)}px`;
+      }
+
+      // Select Route Line & Update Route Strip
+      function selectLine(lineId) {
+        activeLineId = lineId;
+        const lineObj = LINES[lineId];
+        if (!lineObj) return;
+
+        ledLineBadge.textContent = lineObj.name;
+        ledLineBadge.style.borderColor = lineObj.color;
+        updateRouteStrip();
+
+        // Highlight matching line
+        document.querySelectorAll(".track-line").forEach(t => {
+          if (t.id === `track-${lineId}`) {
+            t.style.strokeWidth = "10";
+            t.style.opacity = "1";
+          } else {
+            t.style.strokeWidth = "7.5";
+            t.style.opacity = "0.6";
+          }
+        });
+      }
+
+      // Bottom Route Strip Update
+      function updateRouteStrip() {
+        const lineObj = LINES[activeLineId] || LINES["C"];
+        stripLineDot.style.background = lineObj.color;
+        stripLineName.textContent = lineObj.name;
+        stripNodes.innerHTML = "";
+
+        lineObj.stops.forEach((sid) => {
+          const st = STATIONS[sid];
+          if (!st) return;
+
+          const btn = document.createElement("button");
+          btn.className = `strip-node-btn ${sid === activeStationId ? "active" : ""}`;
+          btn.innerHTML = `<span style="font-family:var(--f-mono); font-size:0.7rem; opacity:0.8;">${st.code}</span> ${st.n}`;
+          btn.onclick = () => {
+            openStation(sid);
+          };
+          stripNodes.appendChild(btn);
+        });
+      }
+
+      // Role Filter Handling - Filters routes and navigates train to the first station of the selected role
+      const ROLE_FIRST_STATION = {
+        highschool: "about",     // A01 認識物治
+        freshman:   "anatomy",   // F01 機能&動作解剖、生理
+        clinical:   "ortho",     // C01 骨科物治
+        life:       "learn",     // L01 跨域自主
+        all:        "about"      // A01 認識物治 (系統總起點)
+      };
+
+      function applyRoleFilter(role, navigateToFirst = true) {
+        currentRole = role;
+        localStorage.setItem(STORAGE_KEY_ROLE, role);
+        document.querySelectorAll(".role-btn").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.role === role);
+        });
+
+        if (role === "all") {
+          document.querySelectorAll(".track-line, .station-node").forEach(el => {
+            el.style.opacity = "1";
+          });
+          selectLine("A");
+          if (navigateToFirst) {
+            drawer.classList.remove("open");
+            activeStationId = null;
+            document.querySelectorAll(".station-node").forEach(node => node.classList.remove("active"));
+            const reticle = document.getElementById("targetReticle");
+            if (reticle) reticle.style.display = "none";
+            if (location.hash) {
+              history.replaceState(null, "", location.pathname + location.search);
+            }
+            const startSt = STATIONS[ROLE_FIRST_STATION.all || "about"];
+            if (startSt) {
+              moveTrainTo(toSvgX(startSt.x), toSvgY(startSt.y), LINES[startSt.line].color, 0, 1);
+            }
+            ledLineBadge.textContent = "全線運行中";
+            ledLineBadge.style.borderColor = "#304152";
+            ledTrainStatus.textContent = "列車就緒";
+            updateRouteStrip();
+            fitFullMap(false, true);
+          }
+          return;
+        }
+
+        // Find which lines match role
+        const matchedLines = Object.values(LINES).filter(l => l.role === role);
+        const matchedLineIds = matchedLines.map(l => l.id);
+        const matchedStops = new Set(matchedLines.flatMap(l => l.stops));
+
+        document.querySelectorAll(".track-line").forEach(tl => {
+          const lid = tl.id.replace("track-", "");
+          tl.style.opacity = matchedLineIds.includes(lid) ? "1" : "0.18";
+        });
+
+        document.querySelectorAll(".station-node").forEach(node => {
+          const sid = node.dataset.id;
+          node.style.opacity = matchedStops.has(sid) ? "1" : "0.22";
+        });
+
+        if (matchedLines.length > 0) {
+          selectLine(matchedLines[0].id);
+        }
+
+        // Automatically navigate train to the first station of the selected role
+        if (navigateToFirst) {
+          const firstSid = ROLE_FIRST_STATION[role] || (matchedLines[0] && matchedLines[0].stops[0]);
+          if (firstSid && STATIONS[firstSid]) {
+            openStation(firstSid);
+          }
+        }
+      }
+
+      // Pan & Zoom Event Listeners
+      function setupPanAndZoom() {
+        function zoomAround(cx, cy, factor) {
+          cancelCameraAnimation();
+          cameraMode = "manual";
+          if (zoomResetBtn) zoomResetBtn.classList.remove("active-mode");
+          const newScale = Math.max(0.25, Math.min(3.5, view.scale * factor));
+          view.x = cx - (cx - view.x) * (newScale / view.scale);
+          view.y = cy - (cy - view.y) * (newScale / view.scale);
+          view.scale = newScale;
+          applyViewTransform();
+        }
+
+        mapWrap.addEventListener("pointerdown", (e) => {
+          if (e.target.closest(".station-node") || e.target.closest(".zoom-controls")) return;
+          cancelCameraAnimation();
+          cameraMode = "manual";
+          if (zoomResetBtn) zoomResetBtn.classList.remove("active-mode");
+          isDragging = true;
+          dragStart.x = e.clientX - view.x;
+          dragStart.y = e.clientY - view.y;
+          mapWrap.setPointerCapture(e.pointerId);
+        });
+
+        mapWrap.addEventListener("pointermove", (e) => {
+          if (!isDragging) return;
+          view.x = e.clientX - dragStart.x;
+          view.y = e.clientY - dragStart.y;
+          applyViewTransform();
+        });
+
+        const endDrag = (e) => {
+          if (isDragging) {
+            isDragging = false;
+            try { mapWrap.releasePointerCapture(e.pointerId); } catch (_) {}
+          }
+        };
+        mapWrap.addEventListener("pointerup", endDrag);
+        mapWrap.addEventListener("pointercancel", endDrag);
+
+        // Mouse Wheel Zoom
+        mapWrap.addEventListener("wheel", (e) => {
+          e.preventDefault();
+          const zoomFactor = e.deltaY < 0 ? 1.15 : 0.88;
+          const rect = mapWrap.getBoundingClientRect();
+          const mouseX = e.clientX - rect.left;
+          const mouseY = e.clientY - rect.top;
+          zoomAround(mouseX, mouseY, zoomFactor);
+        }, { passive: false });
+
+        // Touch Pinch-to-zoom around pinch midpoint
+        mapWrap.addEventListener("touchmove", (e) => {
+          if (e.touches.length === 2) {
+            e.preventDefault();
+            cancelCameraAnimation();
+            cameraMode = "manual";
+            if (zoomResetBtn) zoomResetBtn.classList.remove("active-mode");
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const rect = mapWrap.getBoundingClientRect();
+            const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2 - rect.left;
+            const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2 - rect.top;
+
+            if (lastTouchDist > 0) {
+              const factor = dist / lastTouchDist;
+              const newScale = Math.max(0.25, Math.min(3.5, view.scale * factor));
+              view.x = midX - (midX - view.x) * (newScale / view.scale);
+              view.y = midY - (midY - view.y) * (newScale / view.scale);
+              view.scale = newScale;
+              applyViewTransform();
+            }
+            lastTouchDist = dist;
+            lastTouchMid = { x: midX, y: midY };
+          }
+        }, { passive: false });
+
+        mapWrap.addEventListener("touchend", () => {
+          lastTouchDist = 0;
+          lastTouchMid = null;
+        });
+
+        // Control Buttons (Zoom around viewport center / Return to full overview)
+        document.getElementById("zoomIn").onclick = () => {
+          const rect = mapWrap.getBoundingClientRect();
+          zoomAround(rect.width / 2, rect.height / 2, 1.25);
+        };
+        document.getElementById("zoomOut").onclick = () => {
+          const rect = mapWrap.getBoundingClientRect();
+          zoomAround(rect.width / 2, rect.height / 2, 0.8);
+        };
+        document.getElementById("zoomReset").onclick = () => {
+          fitFullMap(drawer.classList.contains("open"), true);
+        };
+      }
+
+      // Cruise Mode (Automatic Metro Tour)
+      function toggleCruiseMode() {
+        isCruiseMode = !isCruiseMode;
+        const btn = document.getElementById("cruiseToggle");
+        if (isCruiseMode) {
+          btn.style.background = "var(--led-green)";
+          btn.style.color = "#0b3557";
+          btn.textContent = "🚆 巡航中 (點擊停止)";
+          startCruiseTimer();
+        } else {
+          btn.style.background = "";
+          btn.style.color = "";
+          btn.textContent = "🚆 巡航模式";
+          if (cruiseTimer) clearInterval(cruiseTimer);
+        }
+      }
+
+      function startCruiseTimer() {
+        if (cruiseTimer) clearInterval(cruiseTimer);
+        const stops = LINES[activeLineId].stops;
+        let index = stops.indexOf(activeStationId);
+        cruiseTimer = setInterval(() => {
+          if (!isCruiseMode) return;
+          index = (index + 1) % stops.length;
+          openStation(stops[index]);
+        }, 4800);
+      }
+
+      // Live Search Autocomplete
+      function setupSearch() {
+        const input = document.getElementById("searchInput");
+        const dropdown = document.getElementById("searchDropdown");
+
+        input.addEventListener("input", () => {
+          const q = input.value.trim().toLowerCase();
+          if (!q) {
+            dropdown.classList.remove("show");
+            dropdown.innerHTML = "";
+            return;
+          }
+
+          const matches = [];
+          Object.values(STATIONS).forEach(st => {
+            const stMatched = st.n.toLowerCase().includes(q) ||
+                              st.code.toLowerCase().includes(q) ||
+                              st.en.toLowerCase().includes(q) ||
+                              st.sub.toLowerCase().includes(q);
+            if (stMatched) {
+              matches.push({ type: "station", st, title: `${st.code} ${st.n}`, desc: st.sub });
+            }
+            st.exits.forEach(ex => {
+              if (ex.title.toLowerCase().includes(q) || ex.desc.toLowerCase().includes(q) || ex.tag.toLowerCase().includes(q)) {
+                matches.push({ type: "exit", st, title: `${st.code} [${ex.num}] ${ex.title}`, desc: ex.desc, url: ex.url });
+              }
+            });
+          });
+
+          if (matches.length === 0) {
+            dropdown.innerHTML = '<div style="padding:12px; font-size:0.8rem; color:var(--ink-dim); text-align:center;">查無相關站點或出口資源</div>';
+            dropdown.classList.add("show");
+            return;
+          }
+
+          dropdown.innerHTML = "";
+          matches.slice(0, 10).forEach(m => {
+            const row = document.createElement("div");
+            row.className = "search-item";
+            row.innerHTML = `
+              <div>
+                <div style="font-weight:700;">${m.title}</div>
+                <div style="font-size:0.75rem; color:var(--ink-soft); line-height:1.2;">${m.desc.slice(0, 36)}...</div>
+              </div>
+              <span style="font-size:0.75rem; color:var(--cyan); font-weight:700;">➔</span>
+            `;
+            row.onclick = () => {
+              input.value = "";
+              dropdown.classList.remove("show");
+              openStation(m.st.id);
+            };
+            dropdown.appendChild(row);
+          });
+          dropdown.classList.add("show");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!e.target.closest(".search-box")) {
+            dropdown.classList.remove("show");
+          }
+        });
+      }
+
+      // Quiz System
+      function setupQuiz() {
+        const quizBtn = document.getElementById("quizBtn");
+        const quizModal = document.getElementById("quizModal");
+        const quizClose = document.getElementById("quizClose");
+        const quizResultBox = document.getElementById("quizResultBox");
+        const quizResultTitle = document.getElementById("quizResultTitle");
+        const quizResultDesc = document.getElementById("quizResultDesc");
+        const quizJumpBtn = document.getElementById("quizJumpBtn");
+
+        let answers = { 1: null, 2: null, 3: null };
+        let targetStationId = "ortho";
+
+        quizBtn.onclick = () => {
+          quizModal.classList.add("open");
+        };
+        quizClose.onclick = () => {
+          quizModal.classList.remove("open");
+        };
+
+        document.querySelectorAll(".quiz-opt-btn").forEach(btn => {
+          btn.onclick = () => {
+            const qDiv = btn.closest(".quiz-question");
+            const qNum = qDiv.dataset.q;
+            qDiv.querySelectorAll(".quiz-opt-btn").forEach(b => b.classList.remove("selected"));
+            btn.classList.add("selected");
+            answers[qNum] = btn.dataset.val;
+
+            // Check if all answered
+            if (answers[1] && answers[2] && answers[3]) {
+              evaluateQuiz(answers);
+            }
+          };
+        });
+
+        function evaluateQuiz(ans) {
+          quizResultBox.style.display = "block";
+          if (ans[2] === "sports" || ans[3] === "club") {
+            targetStationId = "sports";
+            quizResultTitle.textContent = "🏆 推薦首站：L02 運動防護社站";
+            quizResultDesc.textContent = "您充滿熱血與運動魂！運動防護社帶您深入各大運動賽事場邊貼紮、急救處置與大復盃熱血備戰！";
+          } else if (ans[1] === "highschool" || ans[3] === "admit") {
+            targetStationId = "portfolio";
+            quizResultTitle.textContent = "🎓 推薦首站：A03 備審準備站";
+            quizResultDesc.textContent = "掌握升學關鍵！官方高中學習歷程指引、面試加分項目與高教評鑑認證在此一覽無遺。";
+          } else if (ans[2] === "assist") {
+            targetStationId = "rehab";
+            quizResultTitle.textContent = "💡 推薦首站：C05 機能再教育&科技輔具站";
+            quizResultDesc.textContent = "您具備科技創客思維！探索發明展金牌專利、智慧醫療與高科技輔具操作。";
+          } else if (ans[3] === "whitecoat" || ans[2] === "hospital") {
+            targetStationId = "whitecoat";
+            quizResultTitle.textContent = "✨ 推薦首站：C06 授證實習檢定站";
+            quizResultDesc.textContent = "披上神聖白袍的關鍵里程碑！直通義大醫療體系臨床實習與專技高考衝刺！";
+          } else {
+            targetStationId = "ortho";
+            quizResultTitle.textContent = "🩺 推薦首站：C01 骨科物理治療站";
+            quizResultDesc.textContent = "臨床物理治療核心起點！深入骨骼肌肉系統、脊椎矯正與臨床徒手治療技術。";
+          }
+        }
+
+        quizJumpBtn.onclick = () => {
+          quizModal.classList.remove("open");
+          openStation(targetStationId);
+        };
+      }
+
+      // Station Directory Modal
+      function setupDirectory() {
+        const dirBtn = document.getElementById("dirBtn");
+        const dirModal = document.getElementById("dirModal");
+        const dirClose = document.getElementById("dirClose");
+        const dirGrid = document.getElementById("dirGrid");
+        const dirFilterAll = document.getElementById("dirFilterAll");
+        const dirFilterSaved = document.getElementById("dirFilterSaved");
+
+        let showSavedOnly = false;
+
+        dirBtn.onclick = () => {
+          renderDirectoryGrid();
+          dirModal.classList.add("open");
+        };
+        dirClose.onclick = () => {
+          dirModal.classList.remove("open");
+        };
+
+        dirFilterAll.onclick = () => {
+          showSavedOnly = false;
+          dirFilterAll.classList.add("active");
+          dirFilterSaved.classList.remove("active");
+          renderDirectoryGrid();
+        };
+
+        dirFilterSaved.onclick = () => {
+          showSavedOnly = true;
+          dirFilterSaved.classList.add("active");
+          dirFilterAll.classList.remove("active");
+          renderDirectoryGrid();
+        };
+
+        function renderDirectoryGrid() {
+          dirGrid.innerHTML = "";
+          let stations = Object.values(STATIONS);
+          if (showSavedOnly) {
+            stations = stations.filter(s => savedStations.has(s.id));
+          }
+
+          if (stations.length === 0) {
+            dirGrid.innerHTML = '<div style="grid-column:1/-1; padding:20px; text-align:center; color:var(--ink-dim);">尚無收藏車站。在車站抽屜中點擊「⭐ 收藏此站」即可加入！</div>';
+            return;
+          }
+
+          stations.forEach(st => {
+            const lineObj = LINES[st.line] || { color: "#14283a" };
+            const card = document.createElement("div");
+            card.style.cssText = `
+              background: var(--paper);
+              border: 1px solid var(--line-border);
+              border-radius: 12px;
+              padding: 12px;
+              cursor: pointer;
+              transition: all 0.15s;
+              display: flex;
+              flex-direction: column;
+              gap: 4px;
+            `;
+            card.innerHTML = `
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span style="background:${lineObj.color}; color:#fff; padding:2px 7px; border-radius:6px; font-family:var(--f-mono); font-size:0.75rem; font-weight:700;">${st.code}</span>
+                <span style="font-size:0.75rem; color:var(--ink-soft);">${st.exits.length} 出口</span>
+              </div>
+              <div style="font-weight:700; font-size:0.95rem; margin-top:2px;">${st.n}</div>
+              <div style="font-size:0.75rem; color:var(--ink-dim); line-height:1.3;">${st.sub.slice(0, 32)}...</div>
+            `;
+            card.onmouseenter = () => card.style.borderColor = lineObj.color;
+            card.onmouseleave = () => card.style.borderColor = "var(--line-border)";
+            card.onclick = () => {
+              dirModal.classList.remove("open");
+              openStation(st.id);
+            };
+            dirGrid.appendChild(card);
+          });
+        }
+      }
+
+      // Drawer Actions Setup
+      function setupDrawerActions() {
+        document.getElementById("drawerClose").onclick = () => {
+          drawer.classList.remove("open");
+          activeStationId = null;
+          document.querySelectorAll(".station-node").forEach(node => node.classList.remove("active"));
+          const reticle = document.getElementById("targetReticle");
+          if (reticle) reticle.style.display = "none";
+          if (location.hash) {
+            history.replaceState(null, "", location.pathname + location.search);
+          }
+          fitFullMap(false, true);
+        };
+
+        // Re-align after drawer transition completes (preserve current overview/focus mode)
+        drawer.addEventListener("transitionend", (e) => {
+          if (e.target !== drawer) return;
+          if (e.propertyName !== "margin-right" && e.propertyName !== "transform") return;
+          if (cameraMode === "overview") {
+            fitFullMap(drawer.classList.contains("open"), false);
+          } else if (cameraMode === "focus" && activeStationId) {
+            focusStation(activeStationId, false);
+          }
+        });
+
+        // Bookmark toggle (preserve camera position without jarring re-zoom)
+        document.getElementById("saveBtn").onclick = () => {
+          if (!activeStationId) return;
+          if (savedStations.has(activeStationId)) {
+            savedStations.delete(activeStationId);
+          } else {
+            savedStations.add(activeStationId);
+          }
+          localStorage.setItem(STORAGE_KEY_SAVED, JSON.stringify([...savedStations]));
+          openStation(activeStationId, false, false);
+        };
+
+        // Next / Prev station buttons
+        document.getElementById("nextStationBtn").onclick = () => {
+          if (!activeStationId) return;
+          const stops = LINES[activeLineId].stops;
+          const idx = stops.indexOf(activeStationId);
+          const nextIdx = (idx + 1) % stops.length;
+          openStation(stops[nextIdx]);
+        };
+
+        document.getElementById("prevStationBtn").onclick = () => {
+          if (!activeStationId) return;
+          const stops = LINES[activeLineId].stops;
+          const idx = stops.indexOf(activeStationId);
+          const prevIdx = (idx - 1 + stops.length) % stops.length;
+          openStation(stops[prevIdx]);
+        };
+      }
+
+      // Theme Toggle
+      function setupTheme() {
+        const themeBtn = document.getElementById("themeToggle");
+        const currentTheme = localStorage.getItem(STORAGE_KEY_THEME) ||
+                             (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", currentTheme);
+
+        themeBtn.onclick = () => {
+          const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+          const newTheme = isDark ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", newTheme);
+          localStorage.setItem(STORAGE_KEY_THEME, newTheme);
+        };
+      }
+
+      // Tasks Modal Setup
+      function setupTasksModal() {
+        const btn = document.getElementById("tasksBtn");
+        const modal = document.getElementById("tasksModal");
+        const close = document.getElementById("tasksClose");
+
+        btn.onclick = () => {
+          updateGlobalTaskStats();
+          modal.classList.add("open");
+        };
+        close.onclick = () => {
+          modal.classList.remove("open");
+        };
+      }
+
+      // Sound and Cruise Controls
+      function setupSoundAndCruise() {
+        const soundBtn = document.getElementById("soundToggle");
+        soundBtn.onclick = () => {
+          soundEnabled = !soundEnabled;
+          soundBtn.textContent = soundEnabled ? "🔊 音效: 開" : "🔇 音效: 關";
+          soundBtn.style.color = soundEnabled ? "var(--led-amber)" : "var(--led-dim)";
+        };
+
+        document.getElementById("cruiseToggle").onclick = () => {
+          toggleCruiseMode();
+        };
+      }
+
+      // Hash Routing Listener
+      function handleHash() {
+        const hash = location.hash.replace("#", "").trim();
+        if (hash && STATIONS[hash]) {
+          openStation(hash);
+        } else {
+          // Option A: Start with full-bleed edge-to-edge overview (drawer closed)
+          drawer.classList.remove("open");
+          activeStationId = null;
+          const startSt = STATIONS["about"];
+          if (startSt) {
+            moveTrainTo(toSvgX(startSt.x), toSvgY(startSt.y), LINES[startSt.line].color, 0, 1);
+          }
+          selectLine("A");
+          ledLineBadge.textContent = "全線運行中";
+          ledLineBadge.style.borderColor = "#304152";
+          ledTrainStatus.textContent = "列車就緒（點擊車站探索）";
+          fitFullMap(false, false);
+        }
+      }
+
+      // Role button clicks
+      document.querySelectorAll(".role-btn").forEach(btn => {
+        btn.onclick = () => {
+          applyRoleFilter(btn.dataset.role);
+        };
+      });
+
+      // Close Modals on Overlay Click
+      document.querySelectorAll(".modal-overlay").forEach(overlay => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
+            overlay.classList.remove("open");
+          }
+        });
+      });
+
+      // Initialize
+      window.addEventListener("DOMContentLoaded", () => {
+        renderDecorations();
+        renderTracks();
+        renderStations();
+        setupPanAndZoom();
+        setupSearch();
+        setupQuiz();
+        setupDirectory();
+        setupTasksModal();
+        setupDrawerActions();
+        setupTheme();
+        setupSoundAndCruise();
+        updateGlobalTaskStats();
+        updateRouteStrip();
+
+        window.addEventListener("resize", () => {
+          if (cameraMode === "focus" && activeStationId) {
+            focusStation(activeStationId, false);
+          } else if (cameraMode === "overview") {
+            fitFullMap(drawer.classList.contains("open"), false);
+          }
+        });
+
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(() => {
+            if (cameraMode === "overview") {
+              fitFullMap(drawer.classList.contains("open"), false);
+            } else if (cameraMode === "focus" && activeStationId) {
+              focusStation(activeStationId, false);
+            }
+          });
+        }
+
+        window.addEventListener("hashchange", () => {
+          const h = location.hash.replace("#", "").trim();
+          if (h && STATIONS[h]) {
+            openStation(h);
+          }
+        });
+
+        handleHash();
+      });
+
+    })();
+  </script>
+</body>
+</html>
